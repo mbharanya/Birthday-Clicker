@@ -35,9 +35,9 @@ body {
 }
 
 
-/* h2#poshness {
+h2#poshness {
     display: none;
-} */
+}
 
 div.machine {
     margin: 1.5rem;
@@ -51,7 +51,7 @@ div#auto-clicker {
 }
 
 div#wax-collector {
-    /* display: none; */
+    display: none;
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px orange;

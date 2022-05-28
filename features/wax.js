@@ -1,6 +1,6 @@
-document.getElementById("bee-wax-price").innerText = constants.wax.bee
-document.getElementById("paraffin-wax-price").innerText = constants.wax.paraffin
-document.getElementById("ear-wax-price").innerText = constants.wax.ear
+document.getElementById("bee-wax-price").innerText = constants.waxPrice.bee
+document.getElementById("paraffin-wax-price").innerText = constants.waxPrice.paraffin
+document.getElementById("ear-wax-price").innerText = constants.waxPrice.ear
 
 document.getElementById("buy-bee-wax").addEventListener("click", function (e) {
     buyWax("bee")
@@ -18,20 +18,20 @@ document.getElementById("buy-ear-wax").addEventListener("click", function (e) {
 function buyWax(type) {
     switch (type) {
         case "bee":
-            if (game.purchase(constants.wax.bee)) {
+            if (game.purchase(constants.waxPrice.bee)) {
                 game.resources.poshness += 50
-                game.resources.wax += constants.wax.bee
+                game.resources.wax += 50
             }
             break;
         case "paraffin":
-            if (game.purchase(constants.wax.paraffin)) {
-                game.resources.wax += constants.wax.paraffin
+            if (game.purchase(constants.waxPrice.paraffin)) {
+                game.resources.wax += 50
             }
             break;
         case "ear":
-            if (game.purchase(constants.wax.ear)) {
+            if (game.purchase(constants.waxPrice.ear)) {
                 game.resources.poshness -= 50
-                game.resources.wax += constants.wax.ear
+                game.resources.wax += 50
                 if (!getChatContent().includes("Disgusting...")) {
                     writeToChat("Disgusting...")
                     writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")

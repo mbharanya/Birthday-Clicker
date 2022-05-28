@@ -4,8 +4,11 @@ const autoClickerPriceElement = document.getElementById("auto-clicker-price")
 
 const autoClicker = {
     loopFunction: function () {
-        if (game.purchase(new Number(autoClickerPriceElement.innerText))) {
-            game.candleCreated(autoClicker.clicksPerSecond)
+        const cost = new Number(autoClickerPriceElement.innerText)
+        if (game.purchase(cost)) {
+            if (!game.candleCreated(autoClicker.clicksPerSecond)) {
+                game.resources.money += cost
+            }
         }
     },
     clicksPerSecond: 0,
