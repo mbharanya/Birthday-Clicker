@@ -62,7 +62,7 @@ const autoClicker = {
     loopFunction: function () {
         if (game.resources.money >= 0) {
             game.resources.money -= new Number(autoClickerPriceElement.innerText)
-            game.candleCreated(1)
+            game.candleCreated(autoClicker.clicksPerSecond)
         }
     },
     clicksPerSecond: 0,
@@ -74,7 +74,8 @@ const autoClicker = {
         if (document.getElementById("enable-auto-clicker").checked && newClicksPerSecond > 0) {
             if (newClicksPerSecond != autoClicker.clicksPerSecond) {
                 window.clearInterval(autoClicker.clicker)
-                autoClicker.clicker = window.setInterval(autoClicker.loopFunction, 1000 / newClicksPerSecond)
+                autoClicker.clicker = window.setInterval(autoClicker.loopFunction, 1000)
+                autoClicker.clicksPerSecond = newClicksPerSecond
             }
         } else {
             autoClicker.clicksPerSecond = 0
