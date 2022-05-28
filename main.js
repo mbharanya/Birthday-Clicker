@@ -10,11 +10,16 @@ const unsoldCandlesElement = document.getElementById('unsold-candles-count')
 
 const autoClickerElement = document.getElementById('auto-clicker')
 
+
+const constants = {
+    AUTO_CLICKER_PRICE_PER_CLICK: 0.5
+}
+
 const game = {
-    candles: 99,
+    candles: 0,
     waxPerCandle: 1,
     resources: {
-        unsoldCandles: 99,
+        unsoldCandles: 0,
         wax: 10000,
         money: 0
     },
@@ -60,7 +65,7 @@ const autoClickerPriceElement = document.getElementById("auto-clicker-price")
 
 const autoClicker = {
     loopFunction: function () {
-        if (game.resources.money >= 0) {
+        if (game.resources.money > 0) {
             game.resources.money -= new Number(autoClickerPriceElement.innerText)
             game.candleCreated(autoClicker.clicksPerSecond)
         }
@@ -69,7 +74,7 @@ const autoClicker = {
     clicker: null,
     update: function () {
         const newClicksPerSecond = new Number(clicksPerSecondElement.value)
-        autoClickerPriceElement.innerText = newClicksPerSecond * 0.01
+        autoClickerPriceElement.innerText = newClicksPerSecond * constants.AUTO_CLICKER_PRICE_PER_CLICK
 
         if (document.getElementById("enable-auto-clicker").checked && newClicksPerSecond > 0) {
             if (newClicksPerSecond != autoClicker.clicksPerSecond) {
