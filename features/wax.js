@@ -1,3 +1,7 @@
+document.getElementById("bee-wax-price").innerText = constants.wax.bee
+document.getElementById("paraffin-wax-price").innerText = constants.wax.paraffin
+document.getElementById("ear-wax-price").innerText = constants.wax.ear
+
 document.getElementById("buy-bee-wax").addEventListener("click", function (e) {
     buyWax("bee")
 })
@@ -28,6 +32,10 @@ function buyWax(type) {
             if (game.purchase(constants.wax.ear)) {
                 game.resources.poshness -= 50
                 game.resources.wax += constants.wax.ear
+                if (!getChatContent().includes("Disgusting...")) {
+                    writeToChat("Disgusting...")
+                    writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
+                }
             }
             break;
     }

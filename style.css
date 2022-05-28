@@ -56,3 +56,9 @@ div#wax-collector {
     padding: 1rem;
     box-shadow: 0 0 20px orange;
 }
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

@@ -62,6 +62,10 @@ function playSound(char, down) {
     }
 }
 
+function getChatContent() {
+    return storyElement.innerText
+}
+
 async function writeToChat(text) {
     for (char of text.split('')) {
         playSound(char, true)
@@ -71,6 +75,10 @@ async function writeToChat(text) {
         await delay(Math.random() * 2 * 10)
     }
     storyElement.innerHTML = storyElement.innerHTML + "\n"
+}
+
+function writeHtmlToChat(html) {
+    storyElement.innerHTML = storyElement.innerHTML + html
 }
 
 

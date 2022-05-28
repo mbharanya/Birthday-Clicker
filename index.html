@@ -10,40 +10,44 @@
 </head>
 
 <body>
-    <section id="story">
-        <pre class="messages" id="story-lines"></pre>
-    </section>
-    <section id="game">
-        <h1>Globally produced: <span id="candle-count">0</span>🕯</h1>
-        <button id="make-candle-btn">Make candle</button>
+    <section class="wrapper">
+        <section id="game">
+            <h1>Globally produced: <span id="candle-count">0</span>🕯</h1>
+            <button id="make-candle-btn">Make candle</button>
 
-        <div class="market">
-            <h2>Price per 🕯 <span id="market-price">0</span></h2>
-        </div>
-        <div class="resources">
-            <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
-                Candles</button>
-            <h2>Wax: <span id="wax-count">0</span></h2>
-            <h2>Money: <span id="money-count">0</span>💸</h2>
-            <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
-        </div>
-        <div id="machines">
-            <div class="machine" id="auto-clicker">
-                <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
-                <hr>
-                <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
-                <span>Price per second: </span><span id="auto-clicker-price">0</span><br>
-                </label><br>
-                <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+            <div class="market">
+                <h2>Price per 🕯 <span id="market-price">0</span></h2>
             </div>
-            <div class="machine" id="wax-collector">
-                <h2>Wax collector</h2><img src="img/wax.png" height="50px">
-                <hr>
-                <button id="buy-bee-wax">50x 🐝 wax 100$</button><br>
-                <button id="buy-paraffin-wax">50x Paraffin wax 50$</button><br>
-                <button id="buy-ear-wax">50x 👂 wax 10$ </button><br>
+            <div class="resources">
+                <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
+                    Candles</button>
+                <h2>Wax: <span id="wax-count">0</span></h2>
+                <h2>Money: <span id="money-count">0</span>💸</h2>
+                <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
             </div>
-        </div>
+            <div id="machines">
+                <div class="machine" id="auto-clicker">
+                    <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
+                    <hr>
+                    <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
+                        <span>Price per second: </span><span id="auto-clicker-price">0</span><br>
+                    </label><br>
+                    <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+                </div>
+                <div class="machine" id="wax-collector">
+                    <h2>Wax collector</h2><img src="img/wax.png" height="100px">
+                    <hr>
+                    <button id="buy-bee-wax">50x 🐝 wax <span id="bee-wax-price"></span>$</button><br>
+                    <button id="buy-paraffin-wax">50x Paraffin wax <span id="paraffin-wax-price"></span>$</button><br>
+                    <button id="buy-ear-wax">50x 👂 wax <span id="ear-wax-price"></span>$ </button><br>
+                </div>
+            </div>
+
+        </section>
+        <section id="story">
+            <pre class="messages" id="story-lines"></pre>
+        </section>
+
     </section>
     <script src="math.js"></script>
     <script src="story.js"></script>
