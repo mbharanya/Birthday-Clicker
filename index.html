@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Birthday Clicker</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <section id="story">
         <pre class="messages" id="story-lines"></pre>
@@ -19,13 +21,17 @@
             <h2>Price per 🕯 <span id="market-price">0</span></h2>
         </div>
         <div class="resources">
-            <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell Candles</button>
+            <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
+                Candles</button>
             <h2>Wax: <span id="wax-count">0</span></h2>
             <h2>Money: <span id="money-count">0</span>💸</h2>
         </div>
         <div id="machines">
-            <div id="auto-clicker" style="display: none">
-                <input type="number" name="" id="">
+            <div id="auto-clicker">
+                <label>Clicks per second <input type="number" id="clicks-per-second">
+                    <span>Price per second: </span><span id="auto-clicker-price">0</span>
+                </label>
+                <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
             </div>
         </div>
     </section>
@@ -34,4 +40,5 @@
     <script src="main.js"></script>
     <script src="market.js"></script>
 </body>
+
 </html>

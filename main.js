@@ -45,10 +45,40 @@ const game = {
         game.resources.wax -= amount * game.waxPerCandle
         game.resources.unsoldCandles += amount
     },
-    sellCandle: function(amount, value) {
-        if(amount <= game.resources.unsoldCandles){
+    sellCandle: function (amount, value) {
+        if (amount <= game.resources.unsoldCandles) {
             game.resources.money += amount * value
             game.resources.unsoldCandles -= amount
+        }
+    }
+}
+
+
+
+const clicksPerSecondElement = document.getElementById("clicks-per-second")
+const autoClickerPriceElement = document.getElementById("auto-clicker-price")
+
+const autoClicker = {
+    loopFunction: function () {
+        if (game.resources.money >= 0) {
+            game.resources.money -= new Number(autoClickerPriceElement.innerText)
+            game.candleCreated(1)
+        }
+    },
+    clicksPerSecond: 0,
+    clicker: null,
+    update: function () {
+        const newClicksPerSecond = new Number(clicksPerSecondElement.value)
+        autoClickerPriceElement.innerText = newClicksPerSecond * 0.01
+
+        if (document.getElementById("enable-auto-clicker").checked && newClicksPerSecond > 0) {
+            if (newClicksPerSecond != autoClicker.clicksPerSecond) {
+                window.clearInterval(autoClicker.clicker)
+                autoClicker.clicker = window.setInterval(autoClicker.loopFunction, 1000 / newClicksPerSecond)
+            }
+        } else {
+            autoClicker.clicksPerSecond = 0
+            window.clearInterval(autoClicker.clicker)
         }
     }
 }
@@ -56,6 +86,17 @@ const game = {
 makeCandleBtn.addEventListener("click", function (e) {
     game.candleCreated(1)
 })
+
 sellCandlesBtn.addEventListener("click", function (e) {
     game.sellCandle(game.resources.unsoldCandles, market.currentPrice)
+})
+
+
+
+clicksPerSecondElement.addEventListener("change", function (e) {
+    autoClicker.update()
+})
+
+document.getElementById("enable-auto-clicker").addEventListener("change", function (e) {
+    autoClicker.update()
 })
