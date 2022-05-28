@@ -12,10 +12,10 @@ const autoClickerElement = document.getElementById('auto-clicker')
 
 
 const constants = {
-    AUTO_CLICKER_PRICE_PER_CLICK: 0.2,
+    AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
     BASE_CANDLES: 99,
-    BASE_WAX: 10,
-    BASE_MONEY: 0,
+    BASE_WAX: 1000,
+    BASE_MONEY: 1000,
     WAX_PER_CANDLE: 1,
     waxPrice: {
         bee: 10,
@@ -98,3 +98,4 @@ sellCandlesBtn.addEventListener("click", function (e) {
 
 
 
+writeToChat("Welcome! To get started, click the button below to make a candle.")

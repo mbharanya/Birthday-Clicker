@@ -41,6 +41,9 @@ h2#poshness {
 
 div.machine {
     margin: 1.5rem;
+    padding: 1rem;
+    background-color: #3700B3;
+    box-shadow: 0 0 20px white;
 }
 
 div#auto-clicker {

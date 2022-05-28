@@ -34,12 +34,18 @@
                     </label><br>
                     <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
                 </div>
-                <div class="machine" id="wax-collector">
-                    <h2>Wax collector</h2><img src="img/wax.png" height="100px">
+                <div class="machine" id="auto-seller">
+                    <h2>Auto seller</h2><img src="img/seller.jpg" height="100px" alt="auto-seller">
                     <hr>
-                    <button id="buy-bee-wax">50x 🐝 wax <span id="bee-wax-price"></span>$</button><br>
-                    <button id="buy-paraffin-wax">50x Paraffin wax <span id="paraffin-wax-price"></span>$</button><br>
-                    <button id="buy-ear-wax">50x 👂 wax <span id="ear-wax-price"></span>$ </button><br>
+                    <label>Auto sell all unsold every 1s<input type="checkbox" id="enable-auto-seller"></label>
+                </div>
+
+                <div class="machine" id="wax-collector">
+                    <h2>Wax collector</h2><img src="img/wax.png" height="150px">
+                    <hr>
+                    <button id="buy-bee-wax">100x 🐝 wax <span id="bee-wax-price"></span>$</button><br>
+                    <button id="buy-paraffin-wax">100x Paraffin wax <span id="paraffin-wax-price"></span>$</button><br>
+                    <button id="buy-ear-wax">100x 👂 wax <span id="ear-wax-price"></span>$ </button><br>
                 </div>
             </div>
 
@@ -55,6 +61,7 @@
     <script src="market.js"></script>
     <script src="features/autoclicker.js"></script>
     <script src="features/wax.js"></script>
+    <script src="features/auto-seller.js"></script>
 </body>
 
 </html>
