@@ -49,7 +49,7 @@ h2 {
 
 
 h2#poshness {
-    /* display: none; */
+    display: none;
 }
 
 div.machine {
@@ -60,18 +60,18 @@ div.machine {
 }
 
 div#auto-clicker {
-    /* display: none; */
+    display: none;
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px yellow;
 }
 
 div#auto-seller{
-    /* display: none; */
+    display: none;
 }
 
 div#wax-collector {
-    /* display: none; */
+    display: none;
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px orange;
