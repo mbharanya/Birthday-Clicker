@@ -25,15 +25,23 @@
                 Candles</button>
             <h2>Wax: <span id="wax-count">0</span></h2>
             <h2>Money: <span id="money-count">0</span>💸</h2>
+            <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
         </div>
         <div id="machines">
-            <div id="auto-clicker">
-                <h2>Auto Clicker</h2>
+            <div class="machine" id="auto-clicker">
+                <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
                 <hr>
                 <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
                 <span>Price per second: </span><span id="auto-clicker-price">0</span><br>
                 </label><br>
                 <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+            </div>
+            <div class="machine" id="wax-collector">
+                <h2>Wax collector</h2><img src="img/wax.png" height="50px">
+                <hr>
+                <button id="buy-bee-wax">50x 🐝 wax 100$</button><br>
+                <button id="buy-paraffin-wax">50x Paraffin wax 50$</button><br>
+                <button id="buy-ear-wax">50x 👂 wax 10$ </button><br>
             </div>
         </div>
     </section>
@@ -41,6 +49,8 @@
     <script src="story.js"></script>
     <script src="main.js"></script>
     <script src="market.js"></script>
+    <script src="features/autoclicker.js"></script>
+    <script src="features/wax.js"></script>
 </body>
 
 </html>
