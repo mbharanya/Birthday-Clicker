@@ -14,13 +14,14 @@ const constants = {
     AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
     BASE_CANDLES: 100,
     BASE_WAX: 1000,
-    BASE_MONEY: 1000,
+    BASE_MONEY: 1000000,
     WAX_PER_CANDLE: 1,
     waxPrice: {
         bee: 10,
         paraffin: 5,
         ear: 2.3
-    }
+    },
+    UPGRADE_CPU_PRICE: 1000,
 }
 
 const game = {
@@ -47,9 +48,10 @@ const game = {
         moneyElement.innerText = formatWithCommas(game.resources.money, 2)
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
+        document.getElementById("cpu-name").innerText = cpu.cpuName
         document.getElementById("available-cpus").innerText = formatWithCommas(cpu.availableCpus)
         document.getElementById("available-memory").innerText = formatWithCommas(cpu.availableMemory, 2)
-        document.getElementById("cpu-usage").innerText = formatWithCommas(cpu.cpuUsage * 100)
+        document.getElementById("cpu-usage").innerText = formatWithCommas((cpu.cpuUsage / cpu.availableCpus) * 100)
         document.getElementById("memory-usage").innerText = formatWithCommas(cpu.memoryUsage * 100)
     },
     eventCheck: function () {

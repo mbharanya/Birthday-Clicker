@@ -55,11 +55,11 @@ Object.keys(keyMap).forEach(k => {
 
 function playSound(char, down) {
     const audioFile = audioFilesMap.get(char.toUpperCase()) || audioFilesMap.get("A")
-    // if (down) {
-    //     audioFile[0].play()
-    // } else {
-    //     audioFile[1].play()
-    // }
+    if (down) {
+        audioFile[0].play()
+    } else {
+        audioFile[1].play()
+    }
 }
 
 function getChatContent() {

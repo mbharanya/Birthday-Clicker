@@ -71,7 +71,7 @@ div#auto-seller{
 }
 
 div#wax-collector {
-    display: none;
+    /* display: none; */
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px orange;
