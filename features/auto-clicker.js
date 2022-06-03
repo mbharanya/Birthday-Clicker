@@ -5,7 +5,7 @@ const autoClickerPriceElement = document.getElementById("auto-clicker-price")
 const autoClicker = {
     loopFunction: function () {
         const cost = parseFloat(autoClickerPriceElement.innerText)
-        if (cpu.setUsage(cost, 0)) {
+        if (cpu.setUsage(cost, 0.5)) {
             if (!game.candleCreated(autoClicker.clicksPerSecond)) {
                 // game.resources.money += cost
             }
