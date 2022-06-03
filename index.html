@@ -16,7 +16,7 @@
             <button id="make-candle-btn">Make candle</button>
 
             <div class="market">
-                <h2>Price per 🕯 <span id="market-price">0</span></h2>
+                <h2>Market price per 🕯 <span id="market-price">0</span></h2>
             </div>
             <div class="resources">
                 <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
@@ -26,11 +26,18 @@
                 <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
             </div>
             <div class="machines">
+                <div class="machine">
+                    <h2>CPU / Memory</h2>
+                    <p>CPUs: <span id="available-cpus"></span></p>
+                    <p>Memory: <span id="available-memory"></span></p>
+                    <p>CPU Usage: <span id="cpu-usage"></span>%</p>
+                    <p>Memory Usage: <span id="memory-usage"></span>%</p>
+                </div>
                 <div class="machine" id="auto-clicker">
                     <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
                     <hr>
                     <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
-                        <span>Price per second: </span><span id="auto-clicker-price">0</span><br>
+                        <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
                     </label><br>
                     <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
                 </div>
@@ -58,7 +65,8 @@
     <script src="story.js"></script>
     <script src="main.js"></script>
     <script src="market.js"></script>
-    <script src="features/autoclicker.js"></script>
+    <script src="features/cpu.js"></script>
+    <script src="features/auto-clicker.js"></script>
     <script src="features/wax.js"></script>
     <script src="features/auto-seller.js"></script>
 </body>
