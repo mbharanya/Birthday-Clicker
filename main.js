@@ -67,6 +67,10 @@ const game = {
             document.getElementById("poshness").style.display = "block"
             document.getElementById('wax-collector').style.display = "block"
         }
+
+        if (game.resources.wax <= 0 && wax.autoBuyer) {
+            wax.buy()
+        }
     },
     candleCreated: function (amount) {
         if (game.resources.wax > 0) {

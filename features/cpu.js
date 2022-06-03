@@ -19,7 +19,7 @@ const cpu = {
         }
     },
     nextCpuPrice: function () {
-        return constants.UPGRADE_CPU_PRICE * (cpu.availableCpus + 1)
+        return constants.UPGRADE_CPU_PRICE * (this.availableCpus + 1)
     }
 }
 

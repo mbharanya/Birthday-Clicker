@@ -40,6 +40,7 @@
                         <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
                     </label><br>
                     <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+                    <h3 class="bad" id="auto-clicker-error"></h3>
                 </div>
                 <div class="machine" id="auto-seller">
                     <h2>Auto seller</h2><img src="img/seller.jpg" height="100px" alt="auto-seller">
@@ -49,9 +50,10 @@
                 <div class="machine" id="wax-collector">
                     <h2>Wax collector</h2><img src="img/wax.png" height="150px">
                     <hr>
-                    <button id="buy-bee-wax">100x 🐝 wax <span id="bee-wax-price"></span>$</button><br>
-                    <button id="buy-paraffin-wax">100x Paraffin wax <span id="paraffin-wax-price"></span>$</button><br>
-                    <button id="buy-ear-wax">100x 👂 wax <span id="ear-wax-price"></span>$ </button><br>
+                    <label>Enable Auto Buy<input type="checkbox" name="enable-auto-wax-buyer" id="enable-auto-wax-buyer"></label>
+                    <button id="buy-bee-wax">100x 🐝 wax <span id="bee-wax-price"></span>$</button><label><input type="radio" checked name="auto-buy-wax" value="bee">Auto Buy</label><br>
+                    <button id="buy-paraffin-wax">100x Paraffin wax <span id="paraffin-wax-price"></span>$</button><label><input type="radio" name="auto-buy-wax" value="paraffin">Auto Buy</label><br>
+                    <button id="buy-ear-wax">100x 👂 wax <span id="ear-wax-price"></span>$ </button><label><input type="radio" name="auto-buy-wax" value="ear">Auto Buy</label><br>
                 </div>
             </div>
 

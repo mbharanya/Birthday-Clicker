@@ -2,14 +2,19 @@ const clicksPerSecondElement = document.getElementById("clicks-per-second")
 const autoClickerPriceElement = document.getElementById("auto-clicker-price")
 const enableAutoClickerElement = document.getElementById("enable-auto-clicker")
 
+const errorElement = document.getElementById("auto-clicker-error")
+
 const autoClicker = {
     loopFunction: function () {
+        errorElement.innerText = ""
         const cost = parseFloat(autoClickerPriceElement.innerText)
         if (cpu.setUsage(cost, 0.5)) {
             if (!game.candleCreated(autoClicker.clicksPerSecond)) {
+                errorElement.innerText = "Not enough wax!"
                 enableAutoClickerElement.checked = false
             }
         }else{
+            errorElement.innerText = "Not enough CPU!"
             enableAutoClickerElement.checked = false
         }
     },

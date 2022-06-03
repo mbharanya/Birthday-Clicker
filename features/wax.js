@@ -1,50 +1,66 @@
+
 document.getElementById("bee-wax-price").innerText = constants.waxPrice.bee
 document.getElementById("paraffin-wax-price").innerText = constants.waxPrice.paraffin
 document.getElementById("ear-wax-price").innerText = constants.waxPrice.ear
 
+
+
 document.getElementById("buy-bee-wax").addEventListener("click", function (e) {
-    buyWax("bee")
+    wax.buy("bee")
 })
 
 document.getElementById("buy-paraffin-wax").addEventListener("click", function (e) {
-    buyWax("paraffin")
+    wax.buy("paraffin")
 
 })
 document.getElementById("buy-ear-wax").addEventListener("click", function (e) {
-    buyWax("ear")
+    wax.buy("ear")
 })
 
 
-function buyWax(type) {
-    switch (type) {
-        case "bee":
-            if (game.purchase(constants.waxPrice.bee)) {
-                game.resources.poshness += 50
-                game.resources.wax += 50
-            }
-            break;
-        case "paraffin":
-            if (game.purchase(constants.waxPrice.paraffin)) {
-                game.resources.wax += 50
-            }
-            break;
-        case "ear":
-            if (game.purchase(constants.waxPrice.ear)) {
-                game.resources.poshness -= 50
-                game.resources.wax += 50
-                if (!getChatContent().includes("Disgusting...")) {
-                    writeToChat("Disgusting...")
-                    writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
+document.getElementById("enable-auto-wax-buyer").addEventListener("change", function (e) {
+    wax.autoBuyer = this.checked
+    wax.waxAutoBuyType = document.querySelector('input[name="auto-buy-wax"]:checked').value
+})
+
+
+const wax = {
+    autoBuyer: false,
+    waxAutoBuyType: "bee",
+    buy: (type) => {
+        if (!type && wax.autoBuyer){
+            type = document.querySelector('input[name="auto-buy-wax"]:checked').value
+        }
+        switch (type) {
+            case "bee":
+                if (game.purchase(constants.waxPrice.bee)) {
+                    game.resources.poshness += 100
+                    game.resources.wax += 100
                 }
+                break;
+            case "paraffin":
+                if (game.purchase(constants.waxPrice.paraffin)) {
+                    game.resources.wax += 100
+                }
+                break;
+            case "ear":
+                if (game.purchase(constants.waxPrice.ear)) {
+                    game.resources.poshness -= 100
+                    game.resources.wax += 100
+                    if (!getChatContent().includes("Disgusting...")) {
+                        writeToChat("Disgusting...")
+                        writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
+                    }
+                }
+                break;
+        }
+        if (game.resources.poshness <= 0) {
+            document.getElementById('poshness').classList.remove('glow')
+        } else {
+            // if not already glowing
+            if (!document.getElementById('poshness').classList.contains('glow')) {
+                document.getElementById('poshness').classList.add('glow')
             }
-            break;
-    }
-    if (game.resources.poshness <= 0) {
-        document.getElementById('poshness').classList.remove('glow')
-    } else {
-        // if not already glowing
-        if (!document.getElementById('poshness').classList.contains('glow')) {
-            document.getElementById('poshness').classList.add('glow')
         }
     }
 }

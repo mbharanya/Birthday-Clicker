@@ -78,7 +78,10 @@ div#wax-collector {
 }
 
 
-
+.bad{
+    color: red;
+    font-family: monospace;
+}
 
 
 div.machines{
