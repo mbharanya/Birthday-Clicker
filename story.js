@@ -68,16 +68,26 @@ function getChatContent() {
     return chatContent
 }
 
+let isWriting = false
+
 async function writeToChat(text) {
+    while (isWriting) {
+        await delay(100)
+    }
+    isWriting = true
     chatContent += text + "\n"
     for (char of text.split('')) {
         playSound(char, true)
         await delay(Math.random() * 2 * 10)
+        if (char == "\n") {
+            char = "<br>"
+        }
         storyElement.innerHTML = storyElement.innerHTML + char
         playSound(char, false)
         await delay(Math.random() * 2 * 10)
     }
-    storyElement.innerHTML = storyElement.innerHTML + "\n"
+    storyElement.innerHTML = storyElement.innerHTML + "<br>"
+    isWriting = false
 }
 
 function writeHtmlToChat(html) {
@@ -88,5 +98,3 @@ function writeHtmlToChat(html) {
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-

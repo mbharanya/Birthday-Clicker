@@ -24,24 +24,10 @@ const constants = {
     },
     UPGRADE_CPU_PRICE: 1000,
     UPGRADE_MARKET_PRICE: 5000,
+    MARKET_MANIPULATION_THRESHOLD: 10000,
+    MARKET_MANIPULATION_POSH_POSHNESS: 10000,
+    MARKET_MANIPULATION_DIRTY_POSHNESS: -10000,
 }
-
-
-// const constants = {
-//     AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
-//     BASE_CANDLES: 0,
-//     BASE_WAX: 1000,
-//     BASE_MONEY: 0,
-//     BASE_POSHNESS: 0,
-//     WAX_PER_CANDLE: 1,
-//     waxPrice: {
-//         bee: 10,
-//         paraffin: 5,
-//         ear: 2.3
-//     },
-//     UPGRADE_CPU_PRICE: 1000,
-//     UPGRADE_MARKET_PRICE: 5000,
-// }
 
 const game = {
     candles: constants.BASE_CANDLES,
@@ -92,13 +78,13 @@ const game = {
             wax.buy()
         }
 
-        if (game.candles >= 10000 && game.resources.poshness >= 10000 && !game.features.hasMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
             writeToChat("What a posh gentleman\nYou unlocked Posh Market Manipulation")
             game.features.hasMarketManipulation = true
             document.getElementById("posh-market-manipulation").style.display = "block"
         }
 
-        if (game.candles >= 10000 && game.resources.poshness <= -10000 && !game.features.hasDirtyMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness <= -constants.MARKET_MANIPULATION_DIRTY_POSHNESS && !game.features.hasDirtyMarketManipulation) {
             writeToChat("You are truly disgusting\nYou unlocked Dirty Market Manipulation")
             game.features.hasDirtyMarketManipulation = true
             document.getElementById("dirty-market-manipulation").style.display = "block"
