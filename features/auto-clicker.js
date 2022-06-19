@@ -50,5 +50,6 @@ enableAutoClickerElement.addEventListener("change", function (e) {
 document.getElementById("buy-auto-clicker-btn").addEventListener("click", function (e) {
     if (game.purchase(10)){
         document.getElementById("auto-clicker-paywall").classList.remove("paywall")
+        document.getElementById("buy-auto-clicker-btn").remove()
     }
 })

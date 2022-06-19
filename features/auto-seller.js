@@ -23,5 +23,6 @@ document.getElementById("enable-auto-seller").addEventListener("change", functio
 document.getElementById("buy-auto-seller-btn").addEventListener("click", function (e) {
     if (game.purchase(100)){
         document.getElementById("auto-seller-paywall").classList.remove("paywall")
+        document.getElementById("buy-auto-seller-btn").remove()
     }
 })

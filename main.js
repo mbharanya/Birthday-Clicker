@@ -15,6 +15,7 @@ const constants = {
     BASE_CANDLES: 10000,
     BASE_WAX: 1000,
     BASE_MONEY: 1000000,
+    BASE_POSHNESS: -10000,
     WAX_PER_CANDLE: 1,
     waxPrice: {
         bee: 10,
@@ -31,7 +32,7 @@ const game = {
         unsoldCandles: constants.BASE_CANDLES,
         wax: constants.BASE_WAX,
         money: constants.BASE_MONEY,
-        poshness: -10000
+        poshness: constants.BASE_POSHNESS
     },
     features: {
         hasAutoClicker: false,
