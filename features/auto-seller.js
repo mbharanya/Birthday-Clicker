@@ -19,3 +19,9 @@ const autoSeller = {
 document.getElementById("enable-auto-seller").addEventListener("change", function (e) {
     autoSeller.update()
 })
+
+document.getElementById("buy-auto-seller-btn").addEventListener("click", function (e) {
+    if (game.purchase(100)){
+        document.getElementById("auto-seller-paywall").classList.remove("paywall")
+    }
+})

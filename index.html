@@ -13,7 +13,7 @@
     <section class="wrapper">
         <section id="game">
             <h1>Globally produced: <span id="candle-count">0</span>🕯</h1>
-            <button id="make-candle-btn">Make candle</button>
+            <button id="make-candle-btn"><img class="candle-image" src="img/candle.png"></button>
 
             <div class="market">
                 <h2>Market price per 🕯 <span id="market-price">0</span></h2>
@@ -26,34 +26,59 @@
                 <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
             </div>
             <div class="machines">
-                <div class="machine">
+                <div class="machine" id="cpu">
                     <h2>Processing (<span id="cpu-name"></span>)</h2>
-                    <p>CPUs: <span id="available-cpus"></span></p><button id="buy-cpu-btn">Buy CPU <span id="buy-cpu-price"></span>$</button>
-                    <p>Memory: <span id="available-memory"></span></p>
+                    <p>CPUs: <span id="available-cpus"></span></p><button id="buy-cpu-btn">Buy CPU <span
+                            id="buy-cpu-price"></span>$</button>
                     <p>CPU Usage: <span id="cpu-usage"></span>%</p>
-                    <p>Memory Usage: <span id="memory-usage"></span>%</p>
                 </div>
                 <div class="machine" id="auto-clicker">
                     <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
                     <hr>
-                    <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
-                        <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
-                    </label><br>
-                    <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+                    <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (10$)</button><br>
+                    <div class="paywall" id="auto-clicker-paywall">
+                        <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
+                            <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
+                        </label><br>
+                        <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
+                    </div>
                     <h3 class="bad" id="auto-clicker-error"></h3>
                 </div>
                 <div class="machine" id="auto-seller">
-                    <h2>Auto seller</h2><img src="img/seller.jpg" height="100px" alt="auto-seller">
-                    <hr>
-                    <label>Auto sell all unsold every 1s<input type="checkbox" id="enable-auto-seller"></label>
+                    <h2>Auto seller</h2>
+                    <button id="buy-auto-seller-btn">💸Buy Auto Seller (100$)</button><br>
+                    <div class="paywall" id="auto-seller-paywall">
+                        <img src="img/seller.jpg" height="100px" alt="auto-seller">
+                        <hr>
+                        <label>Auto sell all unsold every 1s<input type="checkbox" id="enable-auto-seller"></label>
+                    </div>
                 </div>
                 <div class="machine" id="wax-collector">
                     <h2>Wax collector</h2><img src="img/wax.png" height="150px">
                     <hr>
-                    <label>Enable Auto Buy<input type="checkbox" name="enable-auto-wax-buyer" id="enable-auto-wax-buyer"></label>
-                    <button id="buy-bee-wax">100x 🐝 wax <span id="bee-wax-price"></span>$</button><label><input type="radio" checked name="auto-buy-wax" value="bee">Auto Buy</label><br>
-                    <button id="buy-paraffin-wax">100x Paraffin wax <span id="paraffin-wax-price"></span>$</button><label><input type="radio" name="auto-buy-wax" value="paraffin">Auto Buy</label><br>
-                    <button id="buy-ear-wax">100x 👂 wax <span id="ear-wax-price"></span>$ </button><label><input type="radio" name="auto-buy-wax" value="ear">Auto Buy</label><br>
+                    <label>Enable Auto Buy<input type="checkbox" name="enable-auto-wax-buyer"
+                            id="enable-auto-wax-buyer"></label><br>
+                    <button id="buy-bee-wax">100x 🐝 wax <span id="bee-wax-price"></span>$</button><label><input
+                            type="radio" checked name="auto-buy-wax" value="bee">Auto Buy</label><br>
+                    <button id="buy-paraffin-wax">100x Paraffin wax <span
+                            id="paraffin-wax-price"></span>$</button><label><input type="radio" name="auto-buy-wax"
+                            value="paraffin">Auto Buy</label><br>
+                    <button id="buy-ear-wax">100x 👂 wax <span id="ear-wax-price"></span>$ </button><label><input
+                            type="radio" name="auto-buy-wax" value="ear">Auto Buy</label><br>
+                </div>
+                <div class="machine" id="posh-market-manipulation">
+                    <h2>Posh Market Manipulation</h2>
+                    <p>Competitors bought: <span class="market-level"></span></p>
+                    <img src="img/capitalist.png" height="100px" alt="capitalist">
+                    <button class="upgrade-market-btn">Buy
+                        Competitor <span class="upgrade-market-price"></span>$</button>
+                </div>
+                <div class="machine" id="dirty-market-manipulation">
+                    <h2>Dirty Market Manipulation</h2>
+                    <p>Kneecaps broken: <span class="market-level"></span></p>
+                    <img src="img/kneecaps.jpg" height="100px" alt="kneecap">
+                    <button class="upgrade-market-btn">Break kneecaps of competitor <span
+                            class="upgrade-market-price"></span>$</button>
                 </div>
             </div>
 
@@ -71,6 +96,7 @@
     <script src="features/auto-clicker.js"></script>
     <script src="features/wax.js"></script>
     <script src="features/auto-seller.js"></script>
+    <script src="features/market-manipulator.js"></script>
 </body>
 
 </html>

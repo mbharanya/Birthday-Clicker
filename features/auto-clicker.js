@@ -13,7 +13,7 @@ const autoClicker = {
                 errorElement.innerText = "Not enough wax!"
                 enableAutoClickerElement.checked = false
             }
-        }else{
+        } else {
             errorElement.innerText = "Not enough CPU!"
             enableAutoClickerElement.checked = false
         }
@@ -44,4 +44,11 @@ clicksPerSecondElement.addEventListener("change", function (e) {
 
 enableAutoClickerElement.addEventListener("change", function (e) {
     autoClicker.update()
+})
+
+
+document.getElementById("buy-auto-clicker-btn").addEventListener("click", function (e) {
+    if (game.purchase(10)){
+        document.getElementById("auto-clicker-paywall").classList.remove("paywall")
+    }
 })

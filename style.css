@@ -12,7 +12,7 @@ body {
     grid-auto-flow: dense;
 }
 
-section.story{
+section.story {
     /* width: 50%; */
 }
 
@@ -47,9 +47,13 @@ h2 {
     }
 }
 
+img.candle-image {
+    width: 5rem;
+    background-color: transparent;
+}
 
 h2#poshness {
-    display: none;
+    /* display: none; */
 }
 
 div.machine {
@@ -60,14 +64,14 @@ div.machine {
 }
 
 div#auto-clicker {
-    display: none;
+    /* display: none; */
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px yellow;
 }
 
-div#auto-seller{
-    display: none;
+div#auto-seller {
+    /* display: none; */
 }
 
 div#wax-collector {
@@ -77,14 +81,28 @@ div#wax-collector {
     box-shadow: 0 0 20px orange;
 }
 
+div#cpu {
+    /* display: none; */
+}
 
-.bad{
+div#posh-market-manipulation {
+    display: none;
+}
+
+div#dirty-market-manipulation {
+    display: none;
+}
+
+.bad {
     color: red;
     font-family: monospace;
 }
 
+div.paywall {
+    filter: blur(10px);
+}
 
-div.machines{
+div.machines {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
