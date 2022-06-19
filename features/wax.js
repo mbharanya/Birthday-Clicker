@@ -6,15 +6,15 @@ document.getElementById("ear-wax-price").innerText = constants.waxPrice.ear
 
 
 document.getElementById("buy-bee-wax").addEventListener("click", function (e) {
-    wax.buy("bee")
+    wax.buy(100, "bee")
 })
 
 document.getElementById("buy-paraffin-wax").addEventListener("click", function (e) {
-    wax.buy("paraffin")
+    wax.buy(100, "paraffin")
 
 })
 document.getElementById("buy-ear-wax").addEventListener("click", function (e) {
-    wax.buy("ear")
+    wax.buy(100, "ear")
 })
 
 
@@ -27,29 +27,29 @@ document.getElementById("enable-auto-wax-buyer").addEventListener("change", func
 const wax = {
     autoBuyer: false,
     waxAutoBuyType: "bee",
-    buy: (type) => {
+    buy: (amount, type) => {
         if (!type && wax.autoBuyer){
             type = document.querySelector('input[name="auto-buy-wax"]:checked').value
         }
         switch (type) {
             case "bee":
                 if (game.purchase(constants.waxPrice.bee)) {
-                    game.resources.poshness += 100
-                    game.resources.wax += 100
-                    game.resources.globalWax -= 100
+                    game.resources.poshness += amount
+                    game.resources.wax += amount
+                    game.resources.globalWax -= amount
                 }
                 break;
             case "paraffin":
                 if (game.purchase(constants.waxPrice.paraffin)) {
-                    game.resources.wax += 100
-                    game.resources.globalWax -= 100
+                    game.resources.wax += amount
+                    game.resources.globalWax -= amount
                 }
                 break;
             case "ear":
                 if (game.purchase(constants.waxPrice.ear)) {
-                    game.resources.poshness -= 100
-                    game.resources.wax += 100
-                    game.resources.globalWax -= 100
+                    game.resources.poshness -= amount
+                    game.resources.wax += amount
+                    game.resources.globalWax -= amount
                     if (!getChatContent().includes("Disgusting...")) {
                         writeToChat("Disgusting...")
                         writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")

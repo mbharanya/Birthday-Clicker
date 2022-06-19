@@ -78,7 +78,7 @@ const game = {
         }
 
         if (game.resources.wax <= 0 && wax.autoBuyer) {
-            wax.buy()
+            wax.buy(autoClicker.clicksPerSecond)
         }
 
         if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
