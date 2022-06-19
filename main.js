@@ -14,6 +14,7 @@ const constants = {
     AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
     BASE_CANDLES: 10000,
     BASE_WAX: 1000,
+    BASE_GLOBAL_WAX: 1000000000,
     BASE_MONEY: 1000000,
     BASE_POSHNESS: -10000,
     WAX_PER_CANDLE: 1,
@@ -33,6 +34,7 @@ const game = {
     candles: constants.BASE_CANDLES,
     resources: {
         unsoldCandles: constants.BASE_CANDLES,
+        globalWax: constants.BASE_GLOBAL_WAX,
         wax: constants.BASE_WAX,
         money: constants.BASE_MONEY,
         poshness: constants.BASE_POSHNESS
@@ -53,6 +55,7 @@ const game = {
     updateDisplay: function () {
         candleCountElement.innerText = formatWithCommas(game.candles)
         waxElement.innerText = formatWithCommas(game.resources.wax)
+        document.getElementById("global-wax-count").innerText = formatWithCommas(game.resources.globalWax)
         moneyElement.innerText = formatWithCommas(game.resources.money, 2)
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)

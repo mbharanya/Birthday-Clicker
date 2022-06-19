@@ -36,17 +36,20 @@ const wax = {
                 if (game.purchase(constants.waxPrice.bee)) {
                     game.resources.poshness += 100
                     game.resources.wax += 100
+                    game.resources.globalWax -= 100
                 }
                 break;
             case "paraffin":
                 if (game.purchase(constants.waxPrice.paraffin)) {
                     game.resources.wax += 100
+                    game.resources.globalWax -= 100
                 }
                 break;
             case "ear":
                 if (game.purchase(constants.waxPrice.ear)) {
                     game.resources.poshness -= 100
                     game.resources.wax += 100
+                    game.resources.globalWax -= 100
                     if (!getChatContent().includes("Disgusting...")) {
                         writeToChat("Disgusting...")
                         writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
