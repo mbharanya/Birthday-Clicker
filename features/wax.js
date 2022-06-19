@@ -64,3 +64,11 @@ const wax = {
         }
     }
 }
+
+
+document.getElementById("buy-auto-wax-btn").addEventListener("click", function (e) {
+    if (game.purchase(200)){
+        document.getElementById("wax-auto-buy-paywall").classList.remove("paywall")
+        document.getElementById("buy-auto-wax-btn").remove()
+    }
+})

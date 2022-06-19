@@ -86,11 +86,11 @@ div#cpu {
 }
 
 div#posh-market-manipulation {
-    display: none;
+    /* display: none; */
 }
 
 div#dirty-market-manipulation {
-    display: none;
+    /* display: none; */
 }
 
 .bad {

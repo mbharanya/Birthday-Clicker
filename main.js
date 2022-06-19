@@ -26,6 +26,23 @@ const constants = {
     UPGRADE_MARKET_PRICE: 5000,
 }
 
+
+// const constants = {
+//     AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
+//     BASE_CANDLES: 0,
+//     BASE_WAX: 1000,
+//     BASE_MONEY: 0,
+//     BASE_POSHNESS: 0,
+//     WAX_PER_CANDLE: 1,
+//     waxPrice: {
+//         bee: 10,
+//         paraffin: 5,
+//         ear: 2.3
+//     },
+//     UPGRADE_CPU_PRICE: 1000,
+//     UPGRADE_MARKET_PRICE: 5000,
+// }
+
 const game = {
     candles: constants.BASE_CANDLES,
     resources: {
