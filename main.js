@@ -48,11 +48,7 @@ const game = {
         moneyElement.innerText = formatWithCommas(game.resources.money, 2)
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
-        document.getElementById("cpu-name").innerText = cpu.cpuName
-        document.getElementById("available-cpus").innerText = formatWithCommas(cpu.availableCpus)
-        document.getElementById("available-memory").innerText = formatWithCommas(cpu.availableMemory, 2)
-        document.getElementById("cpu-usage").innerText = formatWithCommas((cpu.cpuUsage / cpu.availableCpus) * 100)
-        document.getElementById("memory-usage").innerText = formatWithCommas(cpu.memoryUsage * 100)
+        cpu.updateUi()
     },
     eventCheck: function () {
         if (!game.features.hasAutoClicker && game.candles === 100) {
@@ -87,7 +83,7 @@ const game = {
             game.resources.unsoldCandles -= amount
         }
     },
-    purchase: function(amount){
+    purchase: function (amount) {
         if (amount <= game.resources.money) {
             game.resources.money -= amount
             return true
@@ -107,5 +103,7 @@ sellCandlesBtn.addEventListener("click", function (e) {
 })
 
 
-
-writeToChat("Welcome! To get started, click the button below to make a candle.")
+// document is loaded
+window.addEventListener("load", function (e) {
+    writeToChat("Welcome! To get started, click the button below to make a candle.")
+})
