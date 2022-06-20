@@ -12,10 +12,13 @@ const autoClickerElement = document.getElementById('auto-clicker')
 
 const constants = {
     AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
+    AUTO_CLICKER_UNLOCK_PRICE: 10,
+    AUTO_SELLER_UNLOCK_PRICE: 100,
+    AUTO_BUY_WAX_UNLOCK_PRICE: 200,
     BASE_CANDLES: 10000,
     BASE_WAX: 1000,
     BASE_GLOBAL_WAX: 1000000000,
-    BASE_MONEY: 1000000,
+    BASE_MONEY: 1000000000,
     BASE_POSHNESS: -10000,
     WAX_PER_CANDLE: 1,
     waxPrice: {
@@ -28,6 +31,9 @@ const constants = {
     MARKET_MANIPULATION_THRESHOLD: 10000,
     MARKET_MANIPULATION_POSH_POSHNESS: 10000,
     MARKET_MANIPULATION_DIRTY_POSHNESS: -10000,
+    TECH_RESEARCH_COST: 10 * 10 ** 6,
+    QUANTUM_UPGRADE_PRICE: 10 ** 6,
+    BIOLOGY_UPGRADE_PRICE: 11 ** 6,
 }
 
 const game = {
@@ -45,6 +51,7 @@ const game = {
         hasMarketManipulation: false,
         hasDirtyMarketManipulation: false,
         hasCpu: false,
+        hasTech: false,
     },
     mainLoop:
         window.setInterval(function () {
@@ -82,7 +89,7 @@ const game = {
         }
 
         if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
-            writeToChat("What a posh gentleman\nYou unlocked Posh Market Manipulation")
+            writeToChat("What a posh gentleman🎩\nYou unlocked Posh Market Manipulation")
             game.features.hasMarketManipulation = true
             document.getElementById("posh-market-manipulation").style.display = "block"
         }
@@ -93,8 +100,10 @@ const game = {
             document.getElementById("dirty-market-manipulation").style.display = "block"
         }
 
-        if (game.resources.globalWax <= 0){
-            writeToChat("All of the worlds wax has been used up\n")
+        if (game.resources.globalWax <= 0 && !game.features.hasTech) {
+            writeToChat("All of the worlds wax has been used up\nUnlocked Technology Research")
+            game.features.hasTech = true
+            document.getElementById("tech-research").style.display = "block"
         }
     },
     candleCreated: function (amount) {

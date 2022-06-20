@@ -48,8 +48,10 @@ enableAutoClickerElement.addEventListener("change", function (e) {
 
 
 document.getElementById("buy-auto-clicker-btn").addEventListener("click", function (e) {
-    if (game.purchase(10)){
+    if (game.purchase(constants.AUTO_CLICKER_UNLOCK_PRICE)){
         document.getElementById("auto-clicker-paywall").classList.remove("paywall")
         document.getElementById("buy-auto-clicker-btn").remove()
     }
 })
+
+document.getElementById("auto-clicker-unlock-price").innerHTML = formatWithCommas(constants.AUTO_CLICKER_UNLOCK_PRICE)

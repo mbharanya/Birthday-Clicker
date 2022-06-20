@@ -35,7 +35,7 @@
                 <div class="machine" id="auto-clicker">
                     <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
                     <hr>
-                    <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (10$)</button><br>
+                    <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (<span id="auto-clicker-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="auto-clicker-paywall">
                         <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
                             <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
@@ -46,7 +46,7 @@
                 </div>
                 <div class="machine" id="auto-seller">
                     <h2>Auto seller</h2>
-                    <button id="buy-auto-seller-btn">💸Buy Auto Seller (100$)</button><br>
+                    <button id="buy-auto-seller-btn">💸Buy Auto Seller (<span id="auto-seller-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="auto-seller-paywall">
                         <img src="img/seller.jpg" height="100px" alt="auto-seller">
                         <hr>
@@ -65,7 +65,7 @@
                             type="radio" name="auto-buy-wax" value="ear">Auto Buy</label><br>
                     <hr>
                     <h2>Global wax supply: <span id="global-wax-count">0</span></h2>
-                    <button id="buy-auto-wax-btn">💸Buy Auto Wax Buyer (200$)</button><br>
+                    <button id="buy-auto-wax-btn">💸Buy Auto Wax Buyer (<span id="auto-wax-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="wax-auto-buy-paywall">
                         <label>Enable Auto Buy<input type="checkbox" name="enable-auto-wax-buyer"
                                 id="enable-auto-wax-buyer"></label><br>
@@ -85,6 +85,17 @@
                     <button class="upgrade-market-btn">Break kneecaps of competitor <span
                             class="upgrade-market-price"></span>$</button>
                 </div>
+                <div class="machine futuristic" id="tech-research">
+                    <h2>Technology Research</h2><img src="img/future.gif" height="150px">
+                    <hr>
+                    <button id="buy-tech-research">💸Buy Tech Research (<span id="tech-research-unlock-price"></span>$)</button><br>
+                    <div class="paywall" id="tech-research-paywall">
+                        <p>Quantum Research Level <span id="quantum-research-level">0</span></p>
+                        <p>Biology Research Level <span id="biology-research-level">0</span></p>
+                        <button id="buy-quantum-research">Research Quantum Wax Tunneling (<span class="upgrade-quantum-price"></span>$)</button>
+                        <button id="buy-biology-research">Research Human Biology (<span class="upgrade-biology-price"></span>$)</button>
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -102,6 +113,7 @@
     <script src="features/wax.js"></script>
     <script src="features/auto-seller.js"></script>
     <script src="features/market-manipulator.js"></script>
+    <script src="features/tech.js"></script>
 </body>
 
 </html>

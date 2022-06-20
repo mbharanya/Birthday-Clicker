@@ -70,8 +70,11 @@ const wax = {
 
 
 document.getElementById("buy-auto-wax-btn").addEventListener("click", function (e) {
-    if (game.purchase(200)){
+    if (game.purchase(constants.AUTO_BUY_WAX_UNLOCK_PRICE)){
         document.getElementById("wax-auto-buy-paywall").classList.remove("paywall")
         document.getElementById("buy-auto-wax-btn").remove()
     }
 })
+
+
+document.getElementById("auto-wax-unlock-price").innerHTML = formatWithCommas(constants.AUTO_BUY_WAX_UNLOCK_PRICE)
