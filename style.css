@@ -26,6 +26,9 @@ div#story-lines {
     padding: 1rem;
     overflow: auto;
     word-wrap: break-word;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 1rem;
 }
 
 

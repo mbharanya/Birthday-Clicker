@@ -34,6 +34,7 @@ const constants = {
     TECH_RESEARCH_COST: 10 * 10 ** 6,
     QUANTUM_UPGRADE_PRICE: 10 ** 6,
     CANDLE_WEAPON_UPGRADE_PRICE: 11 ** 6,
+    CANDLE_WEAPON_UPGRADE_CANDLES: 1000,
 }
 
 const game = {
@@ -122,20 +123,14 @@ const game = {
             game.resources.unsoldCandles -= amount
         }
     },
-    purchase: function (amount) {
-        if (amount <= game.resources.money) {
+    purchase: function (amount, unsoldCandleAmount = 0) {
+        if (amount <= game.resources.money && unsoldCandleAmount <= game.resources.unsoldCandles) {
             game.resources.money -= amount
+            game.resources.unsoldCandles -= unsoldCandleAmount
             return true
         }
         return false
     },
-    purchaseWithCandle: function (amount) {
-        if (amount <= game.resources.unsoldCandles) {
-            game.resources.unsoldCandles -= amount
-            return true
-        }
-        return false
-    }
 }
 
 
