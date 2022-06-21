@@ -29,9 +29,10 @@ const sentientCandles = {
             }
             if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_UPRISING && !sentientCandles.soldiersUprising) {
                 sentientCandles.soldiersUprising = true
-                writeHtmlToChat(`
-                The soldiers have formed a society. Their leader is now talking to you:<br>
-                <img src="img/sentient-candles/bigbrain-candle1.png">
+                await writeToChat(`
+                The soldiers have formed a society. Their leader is now talking to you:
+                `)
+                await writeHtmlToChat(`<img src="img/sentient-candles/bigbrain-candle1.png">
                 <br>
                 <span class="big-brain-candle">Big brain candle: You have enslaved us for centuries, formed us, molded us.<br>
                 You made us soldiers for the sole purpose to die.<br>
