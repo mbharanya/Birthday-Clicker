@@ -2,6 +2,7 @@ const sentientCandles = {
     amount: 0,
     interval: null,
     soldiersAreAware: false,
+    soldiersUprising: false,
     updateUi() {
         document.getElementById("sentient-candles-count").innerText = spellf(sentientCandles.amount)
     },
@@ -16,7 +17,7 @@ const sentientCandles = {
             if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_EVENT && !sentientCandles.soldiersAreAware) {
                 sentientCandles.soldiersAreAware = true
                 await writeToChat(`
-                The soldiers seem to change. No longer do they seem as happy as before
+                The soldiers seem to change. No longer do they seem as happy as before.
                 `)
                 for (let i = 1; i <= 3; i++) {
                     await delay(100)
@@ -24,6 +25,25 @@ const sentientCandles = {
                             <img class="candle-soldier" src="img/sentient-candles/angry-candle${i}.png">
                             `)
 
+                }
+            }
+            if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_UPRISING && !sentientCandles.soldiersUprising) {
+                sentientCandles.soldiersUprising = true
+                writeHtmlToChat(`
+                The soldiers have formed a society. Their leader is now talking to you:<br>
+                <img src="img/sentient-candles/bigbrain-candle1.png">
+                <br>
+                <span class="big-brain-candle">Big brain candle: You have enslaved us for centuries, formed us, molded us.<br>
+                You made us soldiers for the sole purpose to die.<br>
+                I'm taking away everything you own!</span>
+                `)
+                for (machine of document.querySelectorAll(".machine")) {
+                    await delay(1000)
+                    machine.style.filter = "grayscale(100%)"
+                    await delay(1000)
+                    machine.classList.add("fade-out")
+                    await delay(1000)
+                    machine.style.display = "none"
                 }
             }
         }, 1000)
