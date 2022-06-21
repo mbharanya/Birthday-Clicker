@@ -11,10 +11,14 @@ document.getElementById("tech-research-unlock-price").innerHTML = formatWithComm
 const tech = {
     quantumLevel: 26,
     candleWeaponsLevel: 0,
+    candleSentienceLevel: 0,
     updatePrices: function () {
         document.querySelectorAll(".upgrade-quantum-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("quantum")))
         document.querySelectorAll(".upgrade-candle-weapon-research-price").forEach(e =>
             e.innerText = `${formatWithCommas(this.nextPrice("candleWeapons"))}$ and ${formatWithCommas(this.nextPrice("candleWeaponsCandles"))} unsold candles`
+        )
+        document.querySelectorAll(".upgrade-sentient-candle-research-price").forEach(e =>
+            e.innerText = `${formatWithCommas(this.nextPrice("candleSentience"))} $`
         )
     },
     upgrade: function (type) {
@@ -35,6 +39,13 @@ const tech = {
                     this.eventCheck(type)
                 }
                 break
+            case "candleSentience":
+                if (game.purchase(this.nextPrice("candleSentience"))) {
+                    this.candleSentienceLevel += 1
+                    document.getElementById("candleSentience-research-level").innerText = this.candleSentienceLevel
+                    this.updatePrices()
+                    this.eventCheck(type)
+                }
         }
     },
     nextPrice: function (type) {
@@ -45,6 +56,8 @@ const tech = {
                 return constants.CANDLE_WEAPON_UPGRADE_PRICE * (this.candleWeaponsLevel + 1)
             case "candleWeaponsCandles":
                 return constants.CANDLE_WEAPON_UPGRADE_CANDLES * (this.candleWeaponsLevel + 1)
+            case "candleSentience":
+                return constants.CANDLE_SENTIENCE_UPGRADE_PRICE * (this.candleSentienceLevel + 1)
         }
     },
     eventCheck: async function (type) {
@@ -103,17 +116,44 @@ const tech = {
                     You successfully created a candle weapon! I don't think it's enough yet though.
                     `)
                 }
-         
+
                 if (this.candleWeaponsLevel == 5) {
                     await writeToChat(`
                     Yes yes much better!
                     `)
                 }
                 if (this.candleWeaponsLevel == 30) {
-                    await writeToChat(`This still does not seem enough, but we're still just using guns. Maybe there is a way to autonomously control the weapons?
-                    Or better yet, let the weapons themselves fight.`)
+                    await writeToChat(`This still does not seem enough, but we're still just using guns and swords. Maybe there is a way to autonomously control the weapons?
+                    Or better yet, let the weapons fight themselves.`)
+                    await writeToChat(`Candle sentience research unlocked`)
+                    document.querySelectorAll(".sentient-candles").forEach(e => e.style.display = "block")
                 }
                 break
+            case "candleSentience":
+                if (this.candleSentienceLevel == 5) {
+                    await writeToChat(`Happy little child candle soldiers are being produced now.`)
+                    for (let i = 1; i <= 3; i++) {
+                        await delay(100)
+                        writeHtmlToChat(`
+                                <img class="candle-soldier" src="img/sentient-candles/candle-face${i}.png">
+                                `)
+                    }
+                }
+                if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_EVENT) {
+                    await writeToChat(`
+                    The soldiers seem to change. No longer do they seem as happy as before
+                    `)
+                    for (let i = 1; i <= 3; i++) {
+                        await delay(100)
+                        writeHtmlToChat(`
+                                <img class="candle-soldier" src="img/sentient-candles/angry-face${i}.png">
+                                `)
+
+                    }
+                }
+                sentientCandles.update(this.candleSentienceLevel * 10 ** 5)
+                break
+
         }
     }
 }
@@ -126,4 +166,8 @@ document.getElementById("buy-candle-weapons-research").addEventListener("click",
     tech.upgrade("candleWeapons")
 })
 
+
+document.getElementById("buy-sentient-candle-research").addEventListener("click", function (e) {
+    tech.upgrade("candleSentience")
+})
 tech.updatePrices()

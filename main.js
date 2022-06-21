@@ -34,7 +34,9 @@ const constants = {
     TECH_RESEARCH_COST: 10 * 10 ** 6,
     QUANTUM_UPGRADE_PRICE: 10 ** 6,
     CANDLE_WEAPON_UPGRADE_PRICE: 11 ** 6,
+    CANDLE_SENTIENCE_UPGRADE_PRICE: 12 ** 6,
     CANDLE_WEAPON_UPGRADE_CANDLES: 1000,
+    SENTIENT_CANDLE_SOLDIER_EVENT: 10**9
 }
 
 const game = {
@@ -69,6 +71,7 @@ const game = {
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
         cpu.updateUi()
         enemies.updateUi()
+        sentientCandles.updateUi()
         marketManipulator.updateUi()
     },
     eventCheck: function () {
