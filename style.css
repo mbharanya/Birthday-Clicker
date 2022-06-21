@@ -14,7 +14,7 @@ h2 {
     grid-template-columns: 2fr 1fr;
 }
 
-section#game{
+section#game {
     min-width: 0
 }
 
@@ -114,7 +114,7 @@ div.machines {
     background-color: black;
 }
 
-.tech-research{
+.tech-research {
     /* display: none; */
 }
 
@@ -122,10 +122,28 @@ div.machines {
 @font-face {
     font-family: 'UnifrakturCook';
     src: url('fonts/UnifrakturCook/UnifrakturCook-Bold.ttf') format('truetype')
-  }  
+}
 
-.creepy{
+
+#buy-candle-weapons-research{
+    /* display: none; */
+}
+
+.creepy {
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
     font-size: 1.5rem;
     font-family: 'UnifrakturCook', 'Times New Roman', Times, serif;
+}
+
+img.monster-icon{
+    width: 5rem;
+}
+
+img.weapon-item{
+    width: 10rem;
+    padding: 0.1rem;
+}
+
+#interdimensional-beings{
+    display: none;
 }

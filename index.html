@@ -24,6 +24,9 @@
                 <h2>Wax: <span id="wax-count">0</span></h2>
                 <h2>Money: <span id="money-count">0</span>💸</h2>
                 <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
+                <span id="interdimensional-beings">
+                    <img class="monster-icon" src="img/monster/icon.png"><h2>Interdimensional beings invading our universe: <span id="interdimensional-beings-count">0</span></h2>
+                </span>
             </div>
             <div class="machines">
                 <div class="machine" id="cpu">
@@ -91,9 +94,12 @@
                     <button id="buy-tech-research">💸Buy Tech Research (<span id="tech-research-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="tech-research-paywall">
                         <p>Quantum Research Level <span id="quantum-research-level">0</span></p>
-                        <p>Biology Research Level <span id="biology-research-level">0</span></p>
+                        <p>Candle Weapons Research Level <span id="candleWeapons-research-level">0</span></p>
                         <button id="buy-quantum-research">Research Quantum Wax Tunneling (<span class="upgrade-quantum-price"></span>$)</button>
-                        <button id="buy-biology-research">Research Human Biology (<span class="upgrade-biology-price"></span>$)</button>
+                        <button id="buy-candle-weapons-research">Research Candle Weaponry (<span class="upgrade-candle-weapon-research-price"></span>$)</button>
+                        <hr>
+                        <h3>Inventory</h3>
+                        <div id="candle-weapons"></div>
                     </div>
                 </div>
             </div>
@@ -114,6 +120,7 @@
     <script src="features/auto-seller.js"></script>
     <script src="features/market-manipulator.js"></script>
     <script src="features/tech.js"></script>
+    <script src="features/enemies.js"></script>
 </body>
 
 </html>

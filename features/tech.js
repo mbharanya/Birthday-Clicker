@@ -10,10 +10,11 @@ document.getElementById("tech-research-unlock-price").innerHTML = formatWithComm
 
 const tech = {
     quantumLevel: 26,
-    biologyLevel: 0,
+    candleWeaponsLevel: 0,
+    hasEnemies: false,
     updatePrices: function () {
         document.querySelectorAll(".upgrade-quantum-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("quantum")))
-        document.querySelectorAll(".upgrade-biology-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("biology")))
+        document.querySelectorAll(".upgrade-candle-weapon-research-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("candleWeapons")))
     },
     upgrade: function (type) {
         switch (type) {
@@ -24,10 +25,10 @@ const tech = {
                     this.updatePrices()
                 }
                 break
-            case "biology":
-                if (game.purchase(constants.BIOLOGY_UPGRADE_PRICE * this.biologyLevel + 1)) {
-                    this.biologyLevel += 1
-                    document.getElementById("biology-research-level").innerText = this.biologyLevel
+            case "candleWeapons":
+                if (game.purchase(constants.CANDLE_WEAPON_UPGRADE_PRICE * this.candleWeaponsLevel + 1)) {
+                    this.candleWeaponsLevel += 1
+                    document.getElementById("candleWeapons-research-level").innerText = this.candleWeaponsLevel
                     this.updatePrices()
                 }
                 break
@@ -38,8 +39,8 @@ const tech = {
         switch (type) {
             case "quantum":
                 return constants.QUANTUM_UPGRADE_PRICE * (this.quantumLevel + 1)
-            case "biology":
-                return constants.BIOLOGY_UPGRADE_PRICE * (this.biologyLevel + 1)
+            case "candleWeapons":
+                return constants.CANDLE_WEAPON_UPGRADE_PRICE * (this.candleWeaponsLevel + 1)
         }
     },
     eventCheck: async function () {
@@ -74,11 +75,33 @@ const tech = {
             A coldness starts to fill the air and strange rumbling noises can be heard
             `)
         }
-        if (this.quantumLevel == 27) {
+        if (this.quantumLevel == 30) {
             writeHtmlToChat(`<img src="img/interdimensional1.png" style="width: 100%;">`)
             await delay(1000)
-            writeHtmlToChat(`<p class="creepy">Why have you disturbed my peace, mortals?</p>`)
+            writeHtmlToChat(`<p class="creepy">Agasul: Why have you disturbed my peace, mortals?</p>`)
+            writeToChat(`Oh fuck, if only there was some way to fight this monster?!
+            Wait didn't we make ${spellf(game.candles)} candles?
+            Maybe we can use them to fight them off?`)
+            document.getElementById("buy-candle-weapons-research").style.display = "block"
+            document.getElementById("interdimensional-beings").style.display = "block"
+            enemies.activate()
         }
+
+
+        if (this.candleWeaponsLevel == 1) {
+            await writeToChat(`
+            You successfully created a candle weapon! I don't think it's enough yet though.
+            `)
+            document.getElementById("candle-weapons").innerHTML += `<img class="weapon-item" src="img/candle-weapon/level${this.candleWeaponsLevel}.png">`
+        }
+        if (this.candleWeaponsLevel == 5) {
+            await writeToChat(`
+            Yes yes much better!
+            `)
+            document.getElementById("candle-weapons").innerHTML += `<img class="weapon-item" src="img/candle-weapon/level${this.candleWeaponsLevel}.png">`
+        }
+
+        enemies.killPerInterval(this.candleWeaponsLevel * 10)
     }
 }
 
@@ -86,8 +109,8 @@ document.getElementById("buy-quantum-research").addEventListener("click", functi
     tech.upgrade("quantum")
 })
 
-document.getElementById("buy-biology-research").addEventListener("click", function (e) {
-    tech.upgrade("biology")
+document.getElementById("buy-candle-weapons-research").addEventListener("click", function (e) {
+    tech.upgrade("candleWeapons")
 })
 
 tech.updatePrices()

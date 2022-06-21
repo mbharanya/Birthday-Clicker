@@ -33,7 +33,7 @@ const constants = {
     MARKET_MANIPULATION_DIRTY_POSHNESS: -10000,
     TECH_RESEARCH_COST: 10 * 10 ** 6,
     QUANTUM_UPGRADE_PRICE: 10 ** 6,
-    BIOLOGY_UPGRADE_PRICE: 11 ** 6,
+    CANDLE_WEAPON_UPGRADE_PRICE: 11 ** 6,
 }
 
 const game = {
@@ -67,6 +67,7 @@ const game = {
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
         cpu.updateUi()
+        enemies.updateUi()
         marketManipulator.updateUi()
     },
     eventCheck: function () {
@@ -124,6 +125,13 @@ const game = {
     purchase: function (amount) {
         if (amount <= game.resources.money) {
             game.resources.money -= amount
+            return true
+        }
+        return false
+    },
+    purchaseWithCandle: function (amount) {
+        if (amount <= game.resources.unsoldCandles) {
+            game.resources.unsoldCandles -= amount
             return true
         }
         return false
