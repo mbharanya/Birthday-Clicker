@@ -60,10 +60,10 @@ const game = {
         }, 10),
 
     updateDisplay: function () {
-        candleCountElement.innerText = formatWithCommas(game.candles)
+        candleCountElement.innerText = formatWithCommas(game.candles) + ` (${spellf(game.candles)})`
         waxElement.innerText = formatWithCommas(game.resources.wax)
-        document.getElementById("global-wax-count").innerText = formatWithCommas(game.resources.globalWax)
-        moneyElement.innerText = formatWithCommas(game.resources.money, 2)
+        document.getElementById("global-wax-count").innerText = spellf(game.resources.globalWax)
+        moneyElement.innerText = formatWithCommas(game.resources.money, 2) + ` (${spellf(game.resources.money)})`
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
         cpu.updateUi()

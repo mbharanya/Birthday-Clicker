@@ -28,34 +28,38 @@ const wax = {
     autoBuyer: false,
     waxAutoBuyType: "bee",
     buy: (amount, type) => {
-        if (!type && wax.autoBuyer){
+        if (!type && wax.autoBuyer) {
             type = document.querySelector('input[name="auto-buy-wax"]:checked').value
         }
-        switch (type) {
-            case "bee":
-                if (game.purchase(constants.waxPrice.bee)) {
-                    game.resources.poshness += amount
-                    game.resources.wax += amount
-                    game.resources.globalWax -= amount
-                }
-                break;
-            case "paraffin":
-                if (game.purchase(constants.waxPrice.paraffin)) {
-                    game.resources.wax += amount
-                    game.resources.globalWax -= amount
-                }
-                break;
-            case "ear":
-                if (game.purchase(constants.waxPrice.ear)) {
-                    game.resources.poshness -= amount
-                    game.resources.wax += amount
-                    game.resources.globalWax -= amount
-                    if (!getChatContent().includes("Disgusting...")) {
-                        writeToChat("Disgusting...")
-                        writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
+        if (game.resources.globalWax - amount > 0) {
+            switch (type) {
+                case "bee":
+                    if (game.purchase(constants.waxPrice.bee)) {
+                        game.resources.poshness += amount
+                        game.resources.wax += amount
+                        game.resources.globalWax -= amount
                     }
-                }
-                break;
+                    break;
+                case "paraffin":
+                    if (game.purchase(constants.waxPrice.paraffin)) {
+                        game.resources.wax += amount
+                        game.resources.globalWax -= amount
+                    }
+                    break;
+                case "ear":
+                    if (game.purchase(constants.waxPrice.ear)) {
+                        game.resources.poshness -= amount
+                        game.resources.wax += amount
+                        game.resources.globalWax -= amount
+                        if (!getChatContent().includes("Disgusting...")) {
+                            writeToChat("Disgusting...")
+                            writeHtmlToChat("<img style='margin:5px' src='img/disgusting.gif' width='150px' /><br>")
+                        }
+                    }
+                    break;
+            }
+        }else{
+            writeToChat("Global wax used up!")
         }
         if (game.resources.poshness <= 0) {
             document.getElementById('poshness').classList.remove('glow')
@@ -70,7 +74,7 @@ const wax = {
 
 
 document.getElementById("buy-auto-wax-btn").addEventListener("click", function (e) {
-    if (game.purchase(constants.AUTO_BUY_WAX_UNLOCK_PRICE)){
+    if (game.purchase(constants.AUTO_BUY_WAX_UNLOCK_PRICE)) {
         document.getElementById("wax-auto-buy-paywall").classList.remove("paywall")
         document.getElementById("buy-auto-wax-btn").remove()
     }
