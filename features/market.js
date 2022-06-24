@@ -1,6 +1,7 @@
 const marketPriceElement = document.getElementById('market-price')
 
 const market = {
+    interval: null,
     currentPrice: 0,
     maxPrice: 0.1,
     updateDisplay: function () {
@@ -9,4 +10,4 @@ const market = {
     }
 }
 
-window.setInterval(market.updateDisplay, 1000)
+market.interval = window.setInterval(market.updateDisplay, 1000)

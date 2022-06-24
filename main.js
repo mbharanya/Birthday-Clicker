@@ -41,6 +41,7 @@ const constants = {
 }
 
 const game = {
+    startTime: new Date(),
     candles: constants.BASE_CANDLES,
     resources: {
         unsoldCandles: constants.BASE_CANDLES,

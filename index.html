@@ -14,7 +14,14 @@
         <section id="game">
             <h1>Globally produced: <span id="candle-count">0</span>🕯</h1>
             <button id="make-candle-btn"><img class="candle-image" src="img/candle.png"></button>
-
+            <div id="endgame">
+                <button class="endgame-decision-btn">Vouch to never create any candles again</button>
+                <div id="candle-cities">
+                </div>
+                <div id="endgame-statistics">
+                    
+                </div>
+            </div>
             <div class="market">
                 <h2>Market price per 🕯 <span id="market-price">0</span></h2>
             </div>
@@ -25,13 +32,14 @@
                 <h2>Money: <span id="money-count">0</span>💸</h2>
                 <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
                 <span id="interdimensional-beings">
-                    <img class="monster-icon" src="img/monster/icon.png"><h2>Interdimensional beings invading our universe: <span id="interdimensional-beings-count">0</span></h2>
+                    <img class="monster-icon" src="img/monster/icon.png">
+                    <h2>Interdimensional beings invading our universe: <span id="interdimensional-beings-count">0</span>
+                    </h2>
                     <h2>Killing <span id="killed-enemies-second">0</span> per second</h2>
                 </span>
                 <span class="sentient-candles">
                     <h2>Sentient Candle Soldiers: <span id="sentient-candles-count">0</span></h2>
                 </span>
-                <div id=""
             </div>
             <div class="machines">
                 <div class="machine" id="cpu">
@@ -43,7 +51,8 @@
                 <div class="machine" id="auto-clicker">
                     <h2>Auto Clicker</h2><img src="img/autoit.png" height="50px" alt="auto-clicker">
                     <hr>
-                    <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (<span id="auto-clicker-unlock-price"></span>$)</button><br>
+                    <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (<span
+                            id="auto-clicker-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="auto-clicker-paywall">
                         <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
                             <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
@@ -54,7 +63,8 @@
                 </div>
                 <div class="machine" id="auto-seller">
                     <h2>Auto seller</h2>
-                    <button id="buy-auto-seller-btn">💸Buy Auto Seller (<span id="auto-seller-unlock-price"></span>$)</button><br>
+                    <button id="buy-auto-seller-btn">💸Buy Auto Seller (<span
+                            id="auto-seller-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="auto-seller-paywall">
                         <img src="img/seller.jpg" height="100px" alt="auto-seller">
                         <hr>
@@ -73,7 +83,8 @@
                             type="radio" name="auto-buy-wax" value="ear">Auto Buy</label><br>
                     <hr>
                     <h2>Global wax supply: <span id="global-wax-count">0</span></h2>
-                    <button id="buy-auto-wax-btn">💸Buy Auto Wax Buyer (<span id="auto-wax-unlock-price"></span>$)</button><br>
+                    <button id="buy-auto-wax-btn">💸Buy Auto Wax Buyer (<span
+                            id="auto-wax-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="wax-auto-buy-paywall">
                         <label>Enable Auto Buy<input type="checkbox" name="enable-auto-wax-buyer"
                                 id="enable-auto-wax-buyer"></label><br>
@@ -96,14 +107,19 @@
                 <div class="machine futuristic" id="tech-research">
                     <h2>Technology Research</h2><img src="img/future.gif" height="150px">
                     <hr>
-                    <button id="buy-tech-research">💸Buy Tech Research (<span id="tech-research-unlock-price"></span>$)</button><br>
+                    <button id="buy-tech-research">💸Buy Tech Research (<span
+                            id="tech-research-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="tech-research-paywall">
                         <p>Quantum Research Level <span id="quantum-research-level">0</span></p>
                         <p>Candle Weapons Research Level <span id="candleWeapons-research-level">0</span></p>
-                        <p class="sentient-candles"><img src=img/candle-brain.png>Candle Sentience Level <span id="candleSentience-research-level">0</span></p>
-                        <button id="buy-quantum-research">Research Quantum Wax Tunneling (<span class="upgrade-quantum-price"></span>$)</button>
-                        <button id="buy-candle-weapons-research">Research Candle Weaponry <span class="upgrade-candle-weapon-research-price"></span></button>
-                        <button class="sentient-candles" id="buy-sentient-candle-research">Research Candle Sentience <span class="upgrade-sentient-candle-research-price"></span></button>
+                        <p class="sentient-candles"><img src=img/candle-brain.png>Candle Sentience Level <span
+                                id="candleSentience-research-level">0</span></p>
+                        <button id="buy-quantum-research">Research Quantum Wax Tunneling (<span
+                                class="upgrade-quantum-price"></span>$)</button>
+                        <button id="buy-candle-weapons-research">Research Candle Weaponry <span
+                                class="upgrade-candle-weapon-research-price"></span></button>
+                        <button class="sentient-candles" id="buy-sentient-candle-research">Research Candle Sentience
+                            <span class="upgrade-sentient-candle-research-price"></span></button>
                         <hr>
                         <h3>Inventory</h3>
                         <div id="candle-weapons"></div>
@@ -120,7 +136,7 @@
     <script src="math.js"></script>
     <script src="story.js"></script>
     <script src="main.js"></script>
-    <script src="market.js"></script>
+    <script src="features/market.js"></script>
     <script src="features/cpu.js"></script>
     <script src="features/auto-clicker.js"></script>
     <script src="features/wax.js"></script>
@@ -129,6 +145,7 @@
     <script src="features/tech.js"></script>
     <script src="features/enemies.js"></script>
     <script src="features/sentient-candles.js"></script>
+    <script src="features/end.js"></script>
 </body>
 
 </html>

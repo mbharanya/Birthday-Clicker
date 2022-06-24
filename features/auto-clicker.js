@@ -19,20 +19,20 @@ const autoClicker = {
         }
     },
     clicksPerSecond: 0,
-    clicker: null,
+    interval: null,
     update: function () {
         const newClicksPerSecond = new Number(clicksPerSecondElement.value)
         autoClickerPriceElement.innerText = newClicksPerSecond * constants.AUTO_CLICKER_PRICE_PER_CLICK
 
         if (enableAutoClickerElement.checked && newClicksPerSecond > 0) {
             if (newClicksPerSecond != autoClicker.clicksPerSecond) {
-                window.clearInterval(autoClicker.clicker)
-                autoClicker.clicker = window.setInterval(autoClicker.loopFunction, 1000)
+                window.clearInterval(autoClicker.interval)
+                autoClicker.interval = window.setInterval(autoClicker.loopFunction, 1000)
                 autoClicker.clicksPerSecond = newClicksPerSecond
             }
         } else {
             autoClicker.clicksPerSecond = 0
-            window.clearInterval(autoClicker.clicker)
+            window.clearInterval(autoClicker.interval)
         }
     }
 }

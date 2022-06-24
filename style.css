@@ -26,7 +26,8 @@ div#story-lines {
     padding: 1rem;
     overflow: auto;
     word-wrap: break-word;
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
+    /* Safari */
     position: sticky;
     top: 1rem;
 }
@@ -128,11 +129,11 @@ div.machines {
 }
 
 
-#buy-candle-weapons-research{
+#buy-candle-weapons-research {
     /* display: none; */
 }
 
-.sentient-candles{
+.sentient-candles {
     /* display: none; */
 }
 
@@ -142,24 +143,24 @@ div.machines {
     font-family: 'UnifrakturCook', 'Times New Roman', Times, serif;
 }
 
-img.monster-icon{
+img.monster-icon {
     width: 5rem;
 }
 
-img.weapon-item{
+img.weapon-item {
     width: 10rem;
     padding: 0.1rem;
 }
 
-#interdimensional-beings{
+#interdimensional-beings {
     display: none;
 }
 
-.candle-soldier{
+.candle-soldier {
     width: 7rem;
 }
 
-span.big-brain-candle{
+span.big-brain-candle {
     font-size: 1.5rem;
     font-family: 'Comic Sans MS', cursive, sans-serif;
     text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
@@ -169,4 +170,20 @@ span.big-brain-candle{
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 2s, opacity 2s linear;
-  }
+}
+
+
+#candle-cities {
+    /*display: none;*/
+}
+
+button.endgame-decision-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 5rem;
+    /*display: none;*/
+}
+
+div#endgame-statistics{
+     /*display: none;*/
+}
