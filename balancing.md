@@ -1,0 +1,5 @@
+- global wax runs out at 
+    - CPUs: 484
+    - Kneecaps broken: 118
+    - Money: 6,659,532.47 (6.6 million 
+    - Globally produced: 10,041,479 (10.0 million )🕯

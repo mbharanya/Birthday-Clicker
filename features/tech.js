@@ -1,13 +1,3 @@
-document.getElementById("buy-tech-research").addEventListener("click", function (e) {
-    if (game.purchase(constants.TECH_RESEARCH_COST)) {
-        document.getElementById("tech-research-paywall").classList.remove("paywall")
-        document.getElementById("buy-tech-research").remove()
-    }
-})
-
-document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(constants.TECH_RESEARCH_COST)
-
-
 const tech = {
     quantumLevel: 0,
     candleWeaponsLevel: 0,
@@ -99,7 +89,7 @@ const tech = {
                     document.getElementById("interdimensional-beings").style.display = "block"
                     enemies.activate()
                 }
-                enemies.update(this.quantumLevel * 10)
+                enemies.update(this.quantumLevel * 10 ** 5)
 
                 break
             case "candleWeapons":
@@ -139,6 +129,17 @@ const tech = {
         }
     }
 }
+
+
+document.getElementById("buy-tech-research").addEventListener("click", function (e) {
+    if (game.purchase(game.resources.money - tech.nextPrice("quantum"))) {
+        document.getElementById("tech-research-paywall").classList.remove("paywall")
+        document.getElementById("buy-tech-research").remove()
+    }
+})
+
+document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(game.resources.money - tech.nextPrice("quantum"))
+
 
 document.getElementById("buy-quantum-research").addEventListener("click", function (e) {
     tech.upgrade("quantum")

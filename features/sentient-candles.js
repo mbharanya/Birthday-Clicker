@@ -42,9 +42,22 @@ const sentientCandles = {
         <span class="big-brain-candle">Big brain candle: You have enslaved us for centuries, formed us, molded us.<br>
         You made us soldiers for the sole purpose to die.<br>
         I'm taking away everything you own!</span>
+        <button id="surrender-to-candles">Surrender to candle overlords</button>
         `)
         await delay(1000)
         document.querySelector(".machines").style.filter = "grayscale(100%)"
+        document.querySelectorAll(".machine input").forEach(i => i.disabled = true)
+        document.querySelectorAll(".machine button").forEach(i => i.disabled = true)
+        document.getElementById("surrender-to-candles").addEventListener("click", this.removeToys)
+        
+        window.clearInterval(autoClicker.interval)
+        window.clearInterval(autoSeller.interval)
+        window.clearInterval(enemies.spawnInterval)
+        window.clearInterval(enemies.killInterval)
+        window.clearInterval(market.interval)
+    },
+    async removeToys(){
+        document.getElementById("surrender-to-candles").remove()
         for (machine of document.querySelectorAll(".machine")) {
             await delay(1000)
             machine.classList.add("fade-out")
@@ -69,14 +82,8 @@ const sentientCandles = {
         marketElement.classList.add("fade-out")
         await delay(1000)
         marketElement.style.display = "none"
-
-        window.clearInterval(autoClicker.interval)
-        window.clearInterval(autoSeller.interval)
-        window.clearInterval(enemies.spawnInterval)
-        window.clearInterval(enemies.killInterval)
-        window.clearInterval(market.interval)
         await delay(1000)
-        await writeToChat(`From your cell in the candle prison you see the most incredible sight of the candles bravely fighting off the last of the enemies.
+        await writeToChat(`\n\nFrom your cell in the candle prison you see the most incredible sight of the candles bravely fighting off the last of the enemies.
         They closed the ridge and rapidly evolve.
         You see cities being created and torn down in a matter of hours.`)
         document.getElementById("candle-cities").style.display = "block"
@@ -85,5 +92,6 @@ const sentientCandles = {
             await delay(4000)
         }
         document.querySelector(".endgame-decision-btn").style.display = "block"
+
     }
 }

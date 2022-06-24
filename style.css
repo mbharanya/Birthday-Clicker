@@ -29,6 +29,8 @@ div#story-lines {
     position: -webkit-sticky;
     position: sticky;
     top: 1rem;
+    overflow: auto;
+    max-height: 99vh;
 }
 
 

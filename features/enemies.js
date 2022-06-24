@@ -1,6 +1,6 @@
 const enemies = {
     isActive : false,
-    spawnAmount: 1000,
+    spawnAmount: constants.BASE_SPAWN_ENEMIES_PER_SECOND,
     amount: 0,
     spawnInterval: null,
     killInterval: null,
@@ -8,7 +8,7 @@ const enemies = {
         if (this.killInterval) {
             clearInterval(this.killInterval)
         }
-        this.killInterval = window.setInterval(function () {
+        enemies.killInterval = window.setInterval(function () {
             enemies.amount -= amount
             console.log("Killed " + amount + " enemies");
             if (enemies.amount < 0) {
