@@ -27,7 +27,6 @@ div#story-lines {
     overflow: auto;
     word-wrap: break-word;
     position: -webkit-sticky;
-    /* Safari */
     position: sticky;
     top: 1rem;
 }
@@ -57,7 +56,7 @@ img.candle-image {
 }
 
 h2#poshness {
-    /* display: none; */
+    display: none;
 }
 
 .machine {
@@ -68,33 +67,33 @@ h2#poshness {
 }
 
 div#auto-clicker {
-    /* display: none; */
+    display: none;
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px yellow;
 }
 
 div#auto-seller {
-    /* display: none; */
+    display: none;
 }
 
 div#wax-market {
-    /* display: none; */
+    display: none;
     color: white;
     padding: 1rem;
     box-shadow: 0 0 20px orange;
 }
 
 div#cpu {
-    /* display: none; */
+    display: none;
 }
 
 div#posh-market-manipulation {
-    /* display: none; */
+    display: none;
 }
 
 div#dirty-market-manipulation {
-    /* display: none; */
+    display: none;
 }
 
 .bad {
@@ -118,8 +117,8 @@ div.machines {
     background-color: black;
 }
 
-.tech-research {
-    /* display: none; */
+#tech-research {
+    display: none;
 }
 
 
@@ -130,11 +129,11 @@ div.machines {
 
 
 #buy-candle-weapons-research {
-    /* display: none; */
+    display: none;
 }
 
 .sentient-candles {
-    /* display: none; */
+    display: none;
 }
 
 .creepy {
@@ -174,16 +173,16 @@ span.big-brain-candle {
 
 
 #candle-cities {
-    /*display: none;*/
+    display: none;
 }
 
 button.endgame-decision-btn {
     width: 100%;
     height: 100%;
     font-size: 5rem;
-    /*display: none;*/
+    display: none;
 }
 
-div#endgame-statistics{
-     /*display: none;*/
+div#endgame-statistics {
+    display: none;
 }

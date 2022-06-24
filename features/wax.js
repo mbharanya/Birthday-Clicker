@@ -31,7 +31,7 @@ const wax = {
         if (!type && wax.autoBuyer) {
             type = document.querySelector('input[name="auto-buy-wax"]:checked').value
         }
-        if (game.resources.globalWax - amount > 0) {
+        if (game.resources.globalWax - amount >= 0) {
             switch (type) {
                 case "bee":
                     if (game.purchase(constants.waxPrice.bee)) {
@@ -59,7 +59,12 @@ const wax = {
                     break;
             }
         }else{
+            wax.buy(game.resources.globalWax, type)
+        }
+        if (game.resources.globalWax <= 0) {
             writeToChat("Global wax used up!")
+            wax.autoBuyer = false
+            document.getElementById("enable-auto-wax-buyer").checked = false
         }
         if (game.resources.poshness <= 0) {
             document.getElementById('poshness').classList.remove('glow')

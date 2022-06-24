@@ -4,7 +4,7 @@ const marketManipulator = {
         if (game.purchase(constants.UPGRADE_MARKET_PRICE * this.level + 1)) {
             this.level += 1
             document.querySelectorAll(".upgrade-market-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice()))
-            market.maxPrice += 1
+            market.maxPrice += 0.3
         }
     },
     updateUi: function () {

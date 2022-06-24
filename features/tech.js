@@ -9,7 +9,7 @@ document.getElementById("tech-research-unlock-price").innerHTML = formatWithComm
 
 
 const tech = {
-    quantumLevel: 26,
+    quantumLevel: 0,
     candleWeaponsLevel: 0,
     candleSentienceLevel: 0,
     updatePrices: function () {
@@ -75,7 +75,7 @@ const tech = {
                     It turns out to be high quality wax!`)
                     await writeToChat("Global wax supply increased!")
                 }
-                game.resources.globalWax += (10 ** 10) * this.quantumLevel
+                game.resources.globalWax += constants.QUANTUM_LEVEL_GLOBAL_WAX_MULTIPLIER * this.quantumLevel
 
                 if (this.quantumLevel == 10) {
                     await writeToChat(`
@@ -83,12 +83,6 @@ const tech = {
                     `)
                 }
                 if (this.quantumLevel == 15) {
-                    await writeToChat(`
-                    Strange sounds start to emerge from the depths of the rift.
-                    A coldness starts to fill the air and strange rumbling noises can be heard
-                    `)
-                }
-                if (this.quantumLevel == 17) {
                     await writeToChat(`
                     Strange sounds start to emerge from the depths of the rift.
                     A coldness starts to fill the air and strange rumbling noises can be heard
@@ -137,18 +131,6 @@ const tech = {
                         writeHtmlToChat(`
                                 <img class="candle-soldier" src="img/sentient-candles/candle-face${i}.png">
                                 `)
-                    }
-                }
-                if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_EVENT) {
-                    await writeToChat(`
-                    The soldiers seem to change. No longer do they seem as happy as before
-                    `)
-                    for (let i = 1; i <= 3; i++) {
-                        await delay(100)
-                        writeHtmlToChat(`
-                                <img class="candle-soldier" src="img/sentient-candles/angry-face${i}.png">
-                                `)
-
                     }
                 }
                 sentientCandles.update(this.candleSentienceLevel * 10 ** 5)

@@ -11,15 +11,15 @@ const autoClickerElement = document.getElementById('auto-clicker')
 
 
 const constants = {
-    AUTO_CLICKER_PRICE_PER_CLICK: 0.1,
+    AUTO_CLICKER_PRICE_PER_CLICK: 0.01,
     AUTO_CLICKER_UNLOCK_PRICE: 10,
     AUTO_SELLER_UNLOCK_PRICE: 100,
     AUTO_BUY_WAX_UNLOCK_PRICE: 200,
-    BASE_CANDLES: 10000,
+    BASE_CANDLES: 0,
     BASE_WAX: 1000,
-    BASE_GLOBAL_WAX: 1000000000,
-    BASE_MONEY: 1000000000,
-    BASE_POSHNESS: -10000,
+    BASE_GLOBAL_WAX: 10000000,
+    BASE_MONEY: 0,
+    BASE_POSHNESS: 0,
     WAX_PER_CANDLE: 1,
     waxPrice: {
         bee: 10,
@@ -28,11 +28,12 @@ const constants = {
     },
     UPGRADE_CPU_PRICE: 1000,
     UPGRADE_MARKET_PRICE: 5000,
-    MARKET_MANIPULATION_THRESHOLD: 10000,
+    MARKET_MANIPULATION_CANDLE_THRESHOLD: 10000,
     MARKET_MANIPULATION_POSH_POSHNESS: 10000,
     MARKET_MANIPULATION_DIRTY_POSHNESS: -10000,
-    TECH_RESEARCH_COST: 10 * 10 ** 6,
+    TECH_RESEARCH_COST: 100 * 10 ** 6,
     QUANTUM_UPGRADE_PRICE: 10 ** 6,
+    QUANTUM_LEVEL_GLOBAL_WAX_MULTIPLIER: 10 ** 6,
     CANDLE_WEAPON_UPGRADE_PRICE: 11 ** 6,
     CANDLE_SENTIENCE_UPGRADE_PRICE: 12 ** 6,
     CANDLE_WEAPON_UPGRADE_CANDLES: 1000,
@@ -67,7 +68,7 @@ const game = {
     updateDisplay: function () {
         candleCountElement.innerText = formatWithCommas(game.candles) + ` (${spellf(game.candles)})`
         waxElement.innerText = formatWithCommas(game.resources.wax)
-        document.getElementById("global-wax-count").innerText = spellf(game.resources.globalWax)
+        document.getElementById("global-wax-count").innerText = formatWithCommas(game.resources.globalWax) + ` (${spellf(game.resources.globalWax)})`
         moneyElement.innerText = formatWithCommas(game.resources.money, 2) + ` (${spellf(game.resources.money)})`
         unsoldCandlesElement.innerText = formatWithCommas(game.resources.unsoldCandles)
         document.getElementById("poshness-count").innerText = formatWithCommas(game.resources.poshness)
@@ -95,13 +96,13 @@ const game = {
             wax.buy(autoClicker.clicksPerSecond)
         }
 
-        if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
             writeToChat("What a posh gentleman🎩\nYou unlocked Posh Market Manipulation")
             game.features.hasMarketManipulation = true
             document.getElementById("posh-market-manipulation").style.display = "block"
         }
 
-        if (game.candles >= constants.MARKET_MANIPULATION_THRESHOLD && game.resources.poshness <= -constants.MARKET_MANIPULATION_DIRTY_POSHNESS && !game.features.hasDirtyMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD && game.resources.poshness <= constants.MARKET_MANIPULATION_DIRTY_POSHNESS && !game.features.hasDirtyMarketManipulation) {
             writeToChat("You are truly disgusting\nYou unlocked Dirty Market Manipulation")
             game.features.hasDirtyMarketManipulation = true
             document.getElementById("dirty-market-manipulation").style.display = "block"

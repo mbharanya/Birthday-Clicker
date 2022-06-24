@@ -15,9 +15,9 @@ document.querySelector(".endgame-decision-btn").addEventListener("click", functi
                 <td>${spellf(game.resources.globalWax)} wax left over</td>
                 <td>${spellf(game.resources.money)}$ left</td>
                 <td>${spellf(game.resources.poshness)} poshness collected</td>
+                <td>${spellf(marketManipulator.level)} ${game.resources.poshness < 0 ? "Kneecaps broken" : "Competitors bought"}</td>
                 <td>${hours}hours ${minutes} minutes ${seconds} seconds played</td>
             </tr>
         </table>
     `
-    
 })
