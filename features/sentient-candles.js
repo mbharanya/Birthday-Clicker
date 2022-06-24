@@ -38,9 +38,9 @@ const sentientCandles = {
                 You made us soldiers for the sole purpose to die.<br>
                 I'm taking away everything you own!</span>
                 `)
+                await delay(1000)
+                document.getElementById("game").style.filter = "grayscale(100%)"
                 for (machine of document.querySelectorAll(".machine")) {
-                    await delay(1000)
-                    machine.style.filter = "grayscale(100%)"
                     await delay(1000)
                     machine.classList.add("fade-out")
                     await delay(1000)
