@@ -1,7 +1,7 @@
 const marketManipulator = {
     level: 0,
     upgrade: function () {
-        if (game.purchase(constants.UPGRADE_MARKET_PRICE * this.level + 1)) {
+        if (game.purchase(this.nextPrice())) {
             this.level += 1
             document.querySelectorAll(".upgrade-market-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice()))
             market.maxPrice += 0.3

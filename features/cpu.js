@@ -15,7 +15,7 @@ const cpu = {
         document.getElementById("cpu-usage").innerText = formatWithCommas((cpu.cpuUsage / cpu.availableCpus) * 100)
     },
     upgradeCpu: function () {
-        if (game.purchase(constants.UPGRADE_CPU_PRICE * this.availableCpus + 1)) {
+        if (game.purchase(this.nextCpuPrice())) {
             this.availableCpus += 1
             document.getElementById("buy-cpu-price").innerText = formatWithCommas(this.nextCpuPrice())
         }
