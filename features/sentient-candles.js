@@ -40,7 +40,7 @@ const sentientCandles = {
         await writeHtmlToChat(`<img src="img/sentient-candles/bigbrain-candle1.png">
         <br>
         <span class="big-brain-candle">Big brain candle: You have enslaved us for centuries, formed us, molded us.<br>
-        You made us soldiers for the sole purpose to die.<br>
+        You made us sentient for the sole purpose to die.<br>
         I'm taking away everything you own!</span>
         <button id="surrender-to-candles">Surrender to candle overlords</button>
         `)

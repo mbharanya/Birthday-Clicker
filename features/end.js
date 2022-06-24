@@ -12,6 +12,9 @@ document.querySelector(".endgame-decision-btn").addEventListener("click", functi
         <i>Happy Birthday! Thanks for playing!</i><br/>
         <table>
             <tr>
+                <td><h1> ${game.candles} (${spellf(game.candles)}) candles produced!</h1></td>
+            </tr>
+            <tr>
                 <td>${spellf(game.resources.globalWax)} wax left over</td>
             </tr>
             <tr>

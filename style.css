@@ -11,11 +11,17 @@ h2 {
 
 .wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
 }
 
 section#game {
     min-width: 0
+}
+
+div.resources{
+    position: sticky;
+    top: 1rem;
+    max-height: 100vh;
 }
 
 div#story-lines {
@@ -24,6 +30,7 @@ div#story-lines {
     color: white;
     box-shadow: 0 0 20px green;
     padding: 1rem;
+    margin: 1rem;
     overflow: auto;
     word-wrap: break-word;
     position: -webkit-sticky;
@@ -32,8 +39,6 @@ div#story-lines {
     overflow: auto;
     max-height: 99vh;
 }
-
-
 
 .glow {
     color: #fff;
@@ -109,7 +114,7 @@ div.paywall {
 
 div.machines {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 

@@ -11,8 +11,27 @@
 
 <body>
     <section class="wrapper">
-        <section id="game">
+        <div class="resources">
             <h1>Globally produced: <span id="candle-count">0</span>🕯</h1>
+            <div class="market">
+                <h2>Market price per 🕯 <span id="market-price">0</span></h2>
+            </div>
+            <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
+                Candles</button>
+            <h2>Wax: <span id="wax-count">0</span></h2>
+            <h2>Money: <span id="money-count">0</span> $💸</h2>
+            <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
+            <span id="interdimensional-beings">
+                <img class="monster-icon" src="img/monster/icon.png">
+                <h2>Interdimensional beings invading our universe: <span id="interdimensional-beings-count">0</span>
+                </h2>
+                <h2>Killing <span id="killed-enemies-second">0</span> per second</h2>
+            </span>
+            <span class="sentient-candles">
+                <h2>Sentient Candle Soldiers: <span id="sentient-candles-count">0</span></h2>
+            </span>
+        </div>
+        <section id="game">
             <button id="make-candle-btn"><img class="candle-image" src="img/candle.png"></button>
             <div id="endgame">
                 <button class="endgame-decision-btn">Vouch to never create any candles again</button>
@@ -21,27 +40,7 @@
                 <div id="endgame-statistics">
                     
                 </div>
-            </div>
-            <div class="market">
-                <h2>Market price per 🕯 <span id="market-price">0</span></h2>
-            </div>
-            <div class="resources">
-                <h2>Unsold 🕯: <span id="unsold-candles-count">0</span></h2><button id="sell-candles-btn">Sell
-                    Candles</button>
-                <h2>Wax: <span id="wax-count">0</span></h2>
-                <h2>Money: <span id="money-count">0</span> $💸</h2>
-                <h2 id="poshness">Poshness: <span id="poshness-count">0</span>🎩</h2>
-                <span id="interdimensional-beings">
-                    <img class="monster-icon" src="img/monster/icon.png">
-                    <h2>Interdimensional beings invading our universe: <span id="interdimensional-beings-count">0</span>
-                    </h2>
-                    <h2>Killing <span id="killed-enemies-second">0</span> per second</h2>
-                </span>
-                <span class="sentient-candles">
-                    <h2>Sentient Candle Soldiers: <span id="sentient-candles-count">0</span></h2>
-                </span>
-            </div>
-            <div class="machines">
+            </div>            <div class="machines">
                 <div class="machine" id="cpu">
                     <h2>Processing (<span id="cpu-name"></span>)</h2>
                     <p>CPUs: <span id="available-cpus"></span></p><button id="buy-cpu-btn">Buy CPU <span
