@@ -23,6 +23,9 @@ const debug = {
         tech.quantumLevel = 30
         enemies.activate()
         enemies.updateSpawnAndKill()
+    },
+    endGame(){
+        this.agasulFight()
+        sentientCandles.amount = constants.SENTIENT_CANDLE_SOLDIER_UPRISING
     }
-
 }
