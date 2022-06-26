@@ -17,6 +17,12 @@ const debug = {
         game.resources.money = 10 ** 10
         game.resources.unsoldCandles = 10 ** 10
         tech.updatePrices()
+    },
+    agasulFight(){
+        this.unlockWeapons()
+        tech.quantumLevel = 30
+        enemies.activate()
+        enemies.updateSpawnAndKill()
     }
 
 }

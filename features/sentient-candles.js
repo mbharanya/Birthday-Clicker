@@ -10,10 +10,11 @@ const sentientCandles = {
         if (sentientCandles.interval) {
             clearInterval(sentientCandles.interval)
         }
+        enemies.updateSpawnAndKill()
+
         sentientCandles.interval = window.setInterval(async function () {
             sentientCandles.amount += amount
-            enemies.killPerInterval(amount)
-            console.log(`Spawned ${amount} sentient candles`)
+
             if (sentientCandles.amount >= constants.SENTIENT_CANDLE_SOLDIER_EVENT && !sentientCandles.soldiersAreAware) {
                 sentientCandles.soldiersAreAware = true
                 await writeToChat(`

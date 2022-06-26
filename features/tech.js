@@ -107,12 +107,12 @@ const tech = {
                     document.getElementById("interdimensional-beings").style.display = "block"
                     enemies.activate()
                 }
-                enemies.update(this.quantumLevel * 10 ** 5)
+                enemies.updateSpawnAndKill()
 
                 break
             case "candleWeapons":
                 document.getElementById("candle-weapons").innerHTML += `<img class="weapon-item" src="img/candle-weapon/level${this.candleWeaponsLevel}.png" onerror="this.remove()">`
-                enemies.killPerInterval(this.candleWeaponsLevel * 10 ** 5)
+                enemies.updateSpawnAndKill()
                 if (this.candleWeaponsLevel == 1) {
                     await writeToChat(`
                     You successfully created a candle weapon! I don't think it's enough yet though.
@@ -141,7 +141,7 @@ const tech = {
                                 `)
                     }
                 }
-                sentientCandles.update(sentientCandles.amount * 10 ** 5)
+                sentientCandles.update(this.candleSentienceLevel * 10 ** 5)
                 break
 
         }

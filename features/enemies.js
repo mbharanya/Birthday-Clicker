@@ -1,41 +1,35 @@
 const enemies = {
-    isActive : false,
-    spawnAmount: constants.BASE_SPAWN_ENEMIES_PER_SECOND,
+    isActive: false,
     amount: 0,
-    spawnInterval: null,
-    killInterval: null,
-    killPerInterval(amount) {
-        if (this.killInterval) {
-            clearInterval(this.killInterval)
-        }
-        enemies.killInterval = window.setInterval(function () {
-            enemies.amount -= amount
-            console.log("Killed " + amount + " enemies");
-            if (enemies.amount < 0) {
-                enemies.amount = 0
+    interval: null,
+    updateSpawnAndKill() {
+        const spawnPerSecond = tech.quantumLevel * 10 ** 5 + ((tech.candleSentienceLevel - 1) * 10 ** 6)
+        const killPerSecond = tech.candleWeaponsLevel * 10 ** 4 + tech.candleSentienceLevel * 10 ** 6
+        console.log("Spawning " + spawnPerSecond + " enemies")
+        console.log("Killing " + killPerSecond + " enemies")
+
+        if (enemies.isActive) {
+            if (enemies.interval) {
+                clearInterval(enemies.interval)
             }
-            document.getElementById("killed-enemies-second").innerText = spellf(amount)
-        }, 1000)
+
+            enemies.interval = window.setInterval(function () {
+                enemies.amount -= killPerSecond
+                enemies.amount += spawnPerSecond
+                if (enemies.amount < 0) {
+                    enemies.amount = 0
+                }
+                document.getElementById("killed-enemies-second").innerText = spellf(killPerSecond)
+
+            }, 1000)
+        }
     },
     updateUi() {
         document.getElementById("interdimensional-beings-count").innerText = spellf(enemies.amount)
     },
     activate() {
         this.isActive = true
-        enemies.spawnInterval = window.setInterval(function () {
-            enemies.amount += enemies.spawnAmount
-            console.log("Spawned " + enemies.spawnAmount + " enemies");
-        }, 1000)
-    },
-    update(spawnAmount) {
-        if (this.isActive && enemies.spawnInterval && this.spawnAmount !== spawnAmount) {
-            this.spawnAmount = spawnAmount
-            window.clearInterval(enemies.spawnInterval)
-            enemies.spawnInterval = window.setInterval(function () {
-                enemies.amount += enemies.spawnAmount
-                console.log("Spawned " + enemies.spawnAmount + " enemies");
-            }, 1000)
-        }
+        this.updateSpawnAndKill()
     }
 }
 
