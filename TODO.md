@@ -7,6 +7,3 @@ interdimensional wax, evil beings from other dimension start affecting stuff, ne
 build mega cannon out of all candles and light on fire to close portal to dimension
 
 breed sentient candles
-
-Candle weapons should be effective
-Candle sentience 

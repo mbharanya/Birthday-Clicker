@@ -27,7 +27,7 @@ document.querySelector(".endgame-decision-btn").addEventListener("click", functi
                 <td>${spellf(marketManipulator.level)} ${game.resources.poshness < 0 ? "Kneecaps broken" : "Competitors bought"}</td>
             </tr>
             <tr>
-                <td>${hours}hours ${minutes} minutes ${seconds} seconds played</td>
+                <td>${hours} hours ${minutes} minutes ${seconds} seconds played</td>
             </tr>
         </table>
     `
