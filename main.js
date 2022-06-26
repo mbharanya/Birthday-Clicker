@@ -91,11 +91,6 @@ const game = {
             document.getElementById("poshness").style.display = "block"
             document.getElementById('wax-market').style.display = "block"
         }
-
-        if (game.resources.wax <= 0 && wax.autoBuyer) {
-            wax.buy(autoClicker.clicksPerSecond)
-        }
-
         if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
             writeToChat("What a posh gentleman🎩\nYou unlocked Posh Market Manipulation")
             game.features.hasMarketManipulation = true
@@ -112,12 +107,22 @@ const game = {
             writeToChat("All of the worlds wax has been used up\nUnlocked Technology Research")
             game.features.hasTech = true
             document.getElementById("tech-research").style.display = "block"
+            wax.enableQuantumWax()
         }
+        
+        if (game.resources.wax <= 0 && wax.autoBuyer) {
+            wax.buy(autoClicker.clicksPerSecond)
+        }
+
     },
     candleCreated: function (amount) {
         if (game.resources.wax > 0) {
             game.candles += amount
-            game.resources.wax -= amount * constants.WAX_PER_CANDLE
+            if (!game.features.hasTech) {
+                game.resources.wax -= amount * constants.WAX_PER_CANDLE
+            }else{
+                game.resources.globalWax -= amount * constants.WAX_PER_CANDLE
+            }
             game.resources.unsoldCandles += amount
             return true
         }

@@ -58,7 +58,7 @@ const wax = {
                     }
                     break;
             }
-        }else{
+        } else {
             wax.buy(game.resources.globalWax, type)
         }
         if (game.resources.globalWax <= 0) {
@@ -74,6 +74,11 @@ const wax = {
                 document.getElementById('poshness').classList.add('glow')
             }
         }
+    },
+    enableQuantumWax() {
+        document.querySelectorAll("#wax-market button").forEach(e => e.disabled = true)
+        document.querySelectorAll("#wax-market input").forEach(e => e.disabled = true)
+        wax.autoBuyer = false
     }
 }
 

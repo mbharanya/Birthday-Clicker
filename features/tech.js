@@ -64,7 +64,6 @@ const tech = {
                     He feels a large amount of force pulling against him, but he manages to pull the object through.
                     It turns out to be high quality wax!`)
                     await writeToChat("Global wax supply increased!")
-                    game.resources.wax = 10000
                 }
                 game.resources.globalWax += constants.QUANTUM_LEVEL_GLOBAL_WAX_MULTIPLIER * this.quantumLevel
 
