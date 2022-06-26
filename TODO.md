@@ -8,9 +8,5 @@ build mega cannon out of all candles and light on fire to close portal to dimens
 
 breed sentient candles
 
-Global wax wird normals wax, after tech research
-Cpu 100x buy button
-Market 100x buy button
 Candle weapons should be effective
-Clicks per seconds, max on enter
 Candle sentience 

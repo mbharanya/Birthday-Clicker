@@ -39,13 +39,18 @@
                 <div id="candle-cities">
                 </div>
                 <div id="endgame-statistics">
-                    
+
                 </div>
-            </div>            <div class="machines">
+            </div>
+            <div class="machines">
                 <div class="machine" id="cpu">
                     <h2>Processing (<span id="cpu-name"></span>)</h2>
-                    <p>CPUs: <span id="available-cpus"></span></p><button id="buy-cpu-btn">Buy CPU <span
-                            id="buy-cpu-price"></span>$</button>
+                    <p>CPUs: <span id="available-cpus"></span></p><button class="buy-cpu-btn" data-amount="1">Buy CPU
+                        <span id="buy-cpu-price"></span>$</button>
+                    <button class="buy-cpu-btn" data-amount="10">10x</button>
+                    <button class="buy-cpu-btn" data-amount="50">50x</button>
+                    <button class="buy-cpu-btn" data-amount="100">100x</button>
+                    <button class="buy-cpu-btn" data-amount="1000">1000x</button>
                     <p>CPU Usage: <span id="cpu-usage"></span>%</p>
                 </div>
                 <div class="machine" id="auto-clicker">
@@ -54,7 +59,9 @@
                     <button id="buy-auto-clicker-btn">💸Buy Auto Clicker (<span
                             id="auto-clicker-unlock-price"></span>$)</button><br>
                     <div class="paywall" id="auto-clicker-paywall">
-                        <label>Clicks per second <input type="number" id="clicks-per-second" value=""><br>
+                        <label>Clicks per second <input type="number" id="clicks-per-second" value=""><button
+                                id="auto-clicker-set-max-btn">Set Max</button>
+                            <br>
                             <span>CPU usage cost: </span><span id="auto-clicker-price">0</span><br>
                         </label><br>
                         <label>Enable auto clicker<input type="checkbox" id="enable-auto-clicker"></label>
@@ -95,13 +102,21 @@
                     <img src="img/capitalist.png" height="100px" alt="capitalist"><br>
                     <button class="upgrade-market-btn">Buy
                         Competitor <span class="upgrade-market-price"></span>$</button>
+                        <button class="upgrade-market-btn" data-amount="10">10x</button>
+                        <button class="upgrade-market-btn" data-amount="50">50x</button>
+                        <button class="upgrade-market-btn" data-amount="100">100x</button>
+                        <button class="upgrade-market-btn" data-amount="1000">1000x</button>
                 </div>
                 <div class="machine" id="dirty-market-manipulation">
                     <h2>Dirty Market Manipulation</h2>
                     <p>Kneecaps broken: <span class="market-level"></span></p>
                     <img src="img/kneecaps.jpg" height="100px" alt="kneecap"><br>
-                    <button class="upgrade-market-btn">Break kneecaps of competitor <span
+                    <button class="upgrade-market-btn" data-amount="1">Break kneecaps of competitor <span
                             class="upgrade-market-price"></span>$</button>
+                            <button class="upgrade-market-btn" data-amount="10">10x</button>
+                            <button class="upgrade-market-btn" data-amount="50">50x</button>
+                            <button class="upgrade-market-btn" data-amount="100">100x</button>
+                            <button class="upgrade-market-btn" data-amount="1000">1000x</button>
                 </div>
                 <div class="machine futuristic" id="tech-research">
                     <h2>Technology Research</h2><img src="img/future.gif" height="150px">
