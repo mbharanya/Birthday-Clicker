@@ -64,6 +64,7 @@ const tech = {
                     He feels a large amount of force pulling against him, but he manages to pull the object through.
                     It turns out to be high quality wax!`)
                     await writeToChat("Global wax supply increased!")
+                    game.resources.wax = 10000
                 }
                 game.resources.globalWax += constants.QUANTUM_LEVEL_GLOBAL_WAX_MULTIPLIER * this.quantumLevel
 
@@ -94,7 +95,7 @@ const tech = {
                 break
             case "candleWeapons":
                 document.getElementById("candle-weapons").innerHTML += `<img class="weapon-item" src="img/candle-weapon/level${this.candleWeaponsLevel}.png" onerror="this.remove()">`
-                enemies.killPerInterval(this.candleWeaponsLevel * 10)
+                enemies.killPerInterval(this.candleWeaponsLevel * 10 ** 4)
                 if (this.candleWeaponsLevel == 1) {
                     await writeToChat(`
                     You successfully created a candle weapon! I don't think it's enough yet though.
@@ -123,7 +124,7 @@ const tech = {
                                 `)
                     }
                 }
-                sentientCandles.update(this.candleSentienceLevel * 10 ** 5)
+                sentientCandles.update(sentientCandles.amount * 10 ** 5)
                 break
 
         }
