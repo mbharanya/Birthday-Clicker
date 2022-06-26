@@ -108,7 +108,7 @@ const game = {
             game.features.hasTech = true
             document.getElementById("tech-research").style.display = "block"
             wax.enableQuantumWax()
-            tech.unlock()
+            tech.enable()
         }
         
         if (game.resources.wax <= 0 && wax.autoBuyer) {

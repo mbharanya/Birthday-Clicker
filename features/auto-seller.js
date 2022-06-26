@@ -1,5 +1,11 @@
 const autoSeller = {
     interval: null,
+    unlock(){
+        if (game.purchase(constants.AUTO_SELLER_UNLOCK_PRICE)){
+            document.getElementById("auto-seller-paywall").classList.remove("paywall")
+            document.getElementById("buy-auto-seller-btn").remove()
+        }
+    },
     loopFunction: function () {
         if (game.resources.unsoldCandles > 0) {
             game.sellCandle(game.resources.unsoldCandles, market.currentPrice)
@@ -21,10 +27,7 @@ document.getElementById("enable-auto-seller").addEventListener("change", functio
 })
 
 document.getElementById("buy-auto-seller-btn").addEventListener("click", function (e) {
-    if (game.purchase(constants.AUTO_SELLER_UNLOCK_PRICE)){
-        document.getElementById("auto-seller-paywall").classList.remove("paywall")
-        document.getElementById("buy-auto-seller-btn").remove()
-    }
+    autoSeller.unlock()
 })
 
 document.getElementById("auto-seller-unlock-price").innerHTML = formatWithCommas(constants.AUTO_SELLER_UNLOCK_PRICE)

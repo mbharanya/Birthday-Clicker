@@ -5,6 +5,12 @@ const enableAutoClickerElement = document.getElementById("enable-auto-clicker")
 const errorElement = document.getElementById("auto-clicker-error")
 
 const autoClicker = {
+    unlock(){
+        if (game.purchase(constants.AUTO_CLICKER_UNLOCK_PRICE)) {
+            document.getElementById("auto-clicker-paywall").classList.remove("paywall")
+            document.getElementById("buy-auto-clicker-btn").remove()
+        }
+    },
     loopFunction: function () {
         errorElement.innerText = ""
         const cost = parseFloat(autoClickerPriceElement.innerText)
@@ -20,8 +26,7 @@ const autoClicker = {
     },
     clicksPerSecond: 0,
     interval: null,
-    update: function () {
-        const newClicksPerSecond = new Number(clicksPerSecondElement.value)
+    update(newClicksPerSecond) {
         autoClickerPriceElement.innerText = newClicksPerSecond * constants.AUTO_CLICKER_PRICE_PER_CLICK
 
         if (enableAutoClickerElement.checked && newClicksPerSecond > 0) {
@@ -39,19 +44,24 @@ const autoClicker = {
 
 
 clicksPerSecondElement.addEventListener("change", function (e) {
-    autoClicker.update()
+    autoClicker.update(clicksPerSecondElement.value)
 })
 
 enableAutoClickerElement.addEventListener("change", function (e) {
-    autoClicker.update()
+    autoClicker.update(clicksPerSecondElement.value)
 })
 
 
 document.getElementById("buy-auto-clicker-btn").addEventListener("click", function (e) {
-    if (game.purchase(constants.AUTO_CLICKER_UNLOCK_PRICE)){
-        document.getElementById("auto-clicker-paywall").classList.remove("paywall")
-        document.getElementById("buy-auto-clicker-btn").remove()
-    }
+   autoClicker.unlock()
 })
+
+document.getElementById("auto-clicker-set-max-btn").addEventListener("click", function (e) {
+    const newValue = cpu.availableCpus / constants.AUTO_CLICKER_PRICE_PER_CLICK
+    clicksPerSecondElement.value = newValue
+    autoClicker.update(newValue)
+})
+
+
 
 document.getElementById("auto-clicker-unlock-price").innerHTML = formatWithCommas(constants.AUTO_CLICKER_UNLOCK_PRICE)

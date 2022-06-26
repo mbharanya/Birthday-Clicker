@@ -2,13 +2,22 @@ const tech = {
     quantumLevel: 0,
     candleWeaponsLevel: 0,
     candleSentienceLevel: 0,
-    unlock() {
-        const unlockPrice = game.resources.money - tech.nextPrice("quantum")
+    getUnlockPrice(){
+        return game.resources.money - tech.nextPrice("quantum") - 10000
+    },
+    enable() {
+        const unlockPrice = tech.getUnlockPrice()
         if (unlockPrice < 0) {
             writeToChat("You went to the annual candle appreciation festival and won a prize of 1 Million $!")
             game.resources.money += 10 ** 6
         }
-        document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(game.resources.money - tech.nextPrice("quantum"))
+        document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(unlockPrice)
+    },
+    unlock(){
+        if (game.purchase(tech.getUnlockPrice())) {
+            document.getElementById("tech-research-paywall").classList.remove("paywall")
+            document.getElementById("buy-tech-research").remove()
+        }
     },
     updatePrices: function () {
         document.querySelectorAll(".upgrade-quantum-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("quantum")))
@@ -90,6 +99,7 @@ const tech = {
                     writeHtmlToChat(`<img src="img/interdimensional1.png" style="width: 100%;">`)
                     await delay(1000)
                     writeHtmlToChat(`<p class="creepy">Agasul: Why have you disturbed my peace, mortals?</p>`)
+                    await new Audio(`wav/lukas_insane_echo_deep.flac`).play()
                     writeToChat(`Oh fuck, if only there was some way to fight this monster?!
                     Wait didn't we make ${spellf(game.candles)} candles?
                     Maybe we can use them to fight them off?`)
@@ -102,7 +112,7 @@ const tech = {
                 break
             case "candleWeapons":
                 document.getElementById("candle-weapons").innerHTML += `<img class="weapon-item" src="img/candle-weapon/level${this.candleWeaponsLevel}.png" onerror="this.remove()">`
-                enemies.killPerInterval(this.candleWeaponsLevel * 10 ** 4)
+                enemies.killPerInterval(this.candleWeaponsLevel * 10 ** 5)
                 if (this.candleWeaponsLevel == 1) {
                     await writeToChat(`
                     You successfully created a candle weapon! I don't think it's enough yet though.
@@ -140,10 +150,7 @@ const tech = {
 
 
 document.getElementById("buy-tech-research").addEventListener("click", function (e) {
-    if (game.purchase(game.resources.money - tech.nextPrice("quantum"))) {
-        document.getElementById("tech-research-paywall").classList.remove("paywall")
-        document.getElementById("buy-tech-research").remove()
-    }
+    tech.unlock()
 })
 
 
