@@ -2,6 +2,14 @@ const tech = {
     quantumLevel: 0,
     candleWeaponsLevel: 0,
     candleSentienceLevel: 0,
+    unlock() {
+        const unlockPrice = game.resources.money - tech.nextPrice("quantum")
+        if (unlockPrice < 0) {
+            writeToChat("You went to the annual candle appreciation festival and won a prize of 1 Million $!")
+            game.resources.money += 10 ** 6
+        }
+        document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(game.resources.money - tech.nextPrice("quantum"))
+    },
     updatePrices: function () {
         document.querySelectorAll(".upgrade-quantum-price").forEach(e => e.innerText = formatWithCommas(this.nextPrice("quantum")))
         document.querySelectorAll(".upgrade-candle-weapon-research-price").forEach(e =>
@@ -137,8 +145,6 @@ document.getElementById("buy-tech-research").addEventListener("click", function 
         document.getElementById("buy-tech-research").remove()
     }
 })
-
-document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(game.resources.money - tech.nextPrice("quantum"))
 
 
 document.getElementById("buy-quantum-research").addEventListener("click", function (e) {

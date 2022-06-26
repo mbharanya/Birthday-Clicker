@@ -53,13 +53,18 @@ Object.keys(keyMap).forEach(k => {
 })
 
 
-function playSound(char, down) {
+async function playSound(char, down) {
     const audioFile = audioFilesMap.get(char.toUpperCase()) || audioFilesMap.get("A")
-    if (down) {
-        audioFile[0].play()
-    } else {
-        audioFile[1].play()
+    try{
+        if (down) {
+            await audioFile[0].play()
+        } else {
+            await audioFile[1].play()
+        }
+    }catch(e){
+        //can't play yet - ignore
     }
+
 }
 
 let chatContent = ""
@@ -77,13 +82,13 @@ async function writeToChat(text) {
     isWriting = true
     chatContent += text + "\n"
     for (char of text.split('')) {
-        playSound(char, true)
+        await playSound(char, true)
         await delay(Math.random() * 2 * 10)
         if (char == "\n") {
             char = "<br>"
         }
         storyElement.innerHTML = storyElement.innerHTML + char
-        playSound(char, false)
+        await playSound(char, false)
         await delay(Math.random() * 2 * 10)
     }
     storyElement.innerHTML = storyElement.innerHTML + "<br>"
