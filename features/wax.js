@@ -27,6 +27,12 @@ document.getElementById("enable-auto-wax-buyer").addEventListener("change", func
 const wax = {
     autoBuyer: false,
     waxAutoBuyType: "bee",
+    unlock() {
+        if (game.purchase(constants.AUTO_BUY_WAX_UNLOCK_PRICE)) {
+            document.getElementById("wax-auto-buy-paywall").classList.remove("paywall")
+            document.getElementById("buy-auto-wax-btn").remove()
+        }
+    },
     buy: (amount, type) => {
         if (!type && wax.autoBuyer) {
             type = document.querySelector('input[name="auto-buy-wax"]:checked').value
@@ -84,10 +90,7 @@ const wax = {
 
 
 document.getElementById("buy-auto-wax-btn").addEventListener("click", function (e) {
-    if (game.purchase(constants.AUTO_BUY_WAX_UNLOCK_PRICE)) {
-        document.getElementById("wax-auto-buy-paywall").classList.remove("paywall")
-        document.getElementById("buy-auto-wax-btn").remove()
-    }
+    wax.unlock()
 })
 
 
