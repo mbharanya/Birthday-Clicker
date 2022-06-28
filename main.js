@@ -35,10 +35,10 @@ const constants = {
     QUANTUM_LEVEL_GLOBAL_WAX_MULTIPLIER: 2 * 10 ** 5,
     CANDLE_WEAPON_UPGRADE_PRICE: 11 ** 6,
     CANDLE_SENTIENCE_UPGRADE_PRICE: 12 ** 6,
-    CANDLE_WEAPON_UPGRADE_CANDLES: 10**5,
-    BASE_SPAWN_ENEMIES_PER_SECOND: 10**6,
-    SENTIENT_CANDLE_SOLDIER_EVENT: 10**9,
-    SENTIENT_CANDLE_SOLDIER_UPRISING: 10**10
+    CANDLE_WEAPON_UPGRADE_CANDLES: 10 ** 5,
+    BASE_SPAWN_ENEMIES_PER_SECOND: 10 ** 6,
+    SENTIENT_CANDLE_SOLDIER_EVENT: 10 ** 9,
+    SENTIENT_CANDLE_SOLDIER_UPRISING: 10 ** 10
 }
 
 const game = {
@@ -110,22 +110,26 @@ const game = {
             wax.enableQuantumWax()
             tech.enable()
         }
-        
+
         if (game.resources.wax <= 0 && wax.autoBuyer && autoClicker.clicksPerSecond > 0) {
             wax.buy(autoClicker.clicksPerSecond)
         }
 
     },
-    candleCreated: function (amount) {
-        if (game.resources.wax > 0) {
-            game.candles += amount
-            if (!game.features.hasTech) {
+    candleCreated(amount) {
+        if (!game.features.hasTech) {
+            if (game.resources.wax > 0) {
+                game.candles += amount
                 game.resources.wax -= amount * constants.WAX_PER_CANDLE
-            }else{
-                game.resources.globalWax -= amount * constants.WAX_PER_CANDLE
+                game.resources.unsoldCandles += amount
+                return true
             }
-            game.resources.unsoldCandles += amount
-            return true
+        } else {
+            if (game.resources.globalWax > 0) {
+                game.resources.globalWax -= amount * constants.WAX_PER_CANDLE
+                game.resources.unsoldCandles += amount
+                return true
+            }
         }
         return false
     },

@@ -6,10 +6,11 @@ const tech = {
         return game.resources.money - tech.nextPrice("quantum") - 10000
     },
     enable() {
-        const unlockPrice = tech.getUnlockPrice()
+        let unlockPrice = tech.getUnlockPrice()
         if (unlockPrice < 0) {
-            writeToChat("You went to the annual candle appreciation festival and won a prize of 1 Million $!")
-            game.resources.money += 10 ** 6
+            writeToChat("You went to the annual candle appreciation festival and won a prize!")
+            game.resources.money += 10 ** 6 + 12000
+            unlockPrice = tech.getUnlockPrice()
         }
         document.getElementById("tech-research-unlock-price").innerHTML = formatWithCommas(unlockPrice)
     },
