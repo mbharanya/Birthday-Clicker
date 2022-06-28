@@ -29,7 +29,9 @@ const cpu = {
 
 
 document.querySelectorAll(".buy-cpu-btn").forEach(b => b.addEventListener("click", function (e) {
-    cpu.upgradeCpu(parseInt(e.target.dataset.amount))
+    const element = e.target.tagName === "SPAN" ? e.target.parentElement : e.target
+
+    cpu.upgradeCpu(parseInt(element.dataset.amount))
 }))
 
 document.getElementById("buy-cpu-price").innerText = formatWithCommas(cpu.nextCpuPrice())

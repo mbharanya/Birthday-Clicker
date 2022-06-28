@@ -19,7 +19,8 @@ const marketManipulator = {
 
 
 document.querySelectorAll(".upgrade-market-btn").forEach(e => e.addEventListener("click", function (e) {
-    marketManipulator.upgrade(parseInt(e.target.dataset.amount))
+    const element = e.target.tagName === "SPAN" ? e.target.parentElement : e.target
+    marketManipulator.upgrade(parseInt(element.dataset.amount))
 }))
 
 document.querySelectorAll(".upgrade-market-price").forEach(e => e.innerText = formatWithCommas(marketManipulator.nextPrice()))
