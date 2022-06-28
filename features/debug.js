@@ -3,7 +3,13 @@ const debug = {
         delay = (ms) => {
             return new Promise(resolve => setTimeout(resolve, 0));
         }
-        playSound = function(){}
+        playSound = function () { }
+    },
+    waxRunsOut() {
+        this.setup()
+        game.candles = 99
+        game.resources.wax = 1
+        game.resources.money = 10000
     },
     unlockWax() {
         this.setup()

@@ -17,12 +17,17 @@ const autoClicker = {
         if (cpu.setUsage(cost)) {
             if (!game.candleCreated(parseInt(autoClicker.clicksPerSecond))) {
                 errorElement.innerText = "Not enough wax!"
-                enableAutoClickerElement.checked = false
+                autoClicker.disable()
             }
         } else {
             errorElement.innerText = "Not enough CPU!"
-            enableAutoClickerElement.checked = false
+            autoClicker.disable()
         }
+    },
+    disable(){
+        enableAutoClickerElement.checked = false
+        window.clearInterval(autoClicker.interval)
+        autoClicker.clicksPerSecond = 0
     },
     clicksPerSecond: 0,
     interval: null,
