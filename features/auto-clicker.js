@@ -15,7 +15,7 @@ const autoClicker = {
         errorElement.innerText = ""
         const cost = parseFloat(autoClickerPriceElement.innerText)
         if (cpu.setUsage(cost)) {
-            if (!game.candleCreated(autoClicker.clicksPerSecond)) {
+            if (!game.candleCreated(parseInt(autoClicker.clicksPerSecond))) {
                 errorElement.innerText = "Not enough wax!"
                 enableAutoClickerElement.checked = false
             }
