@@ -1,24 +1,35 @@
 const debug = {
+    setup() {
+        delay = (ms) => {
+            return new Promise(resolve => setTimeout(resolve, 0));
+        }
+        playSound = function(){}
+    },
     unlockWax() {
+        this.setup()
         game.resources.money = 10000
         game.candles = 100
         game.resources.wax = 0
         game.features.hasWaxMarket = true
+        autoClickerElement.style.display = "block"
+        document.getElementById("auto-seller").style.display = "block"
+        document.getElementById("cpu").style.display = "block"
         document.getElementById("poshness").style.display = "block"
         document.getElementById('wax-market').style.display = "block"
-    },
-    unlockTech() {
-        cpu.availableCpus = 500;
         game.features.hasMarketManipulation = true
         document.getElementById("posh-market-manipulation").style.display = "block"
+        autoClicker.unlock()
+        autoSeller.unlock()
+        wax.unlock()
+    },
+    unlockTech() {
+        this.unlockWax()
+        cpu.availableCpus = 500;
         marketManipulator.level = 120
         game.resources.money = 6.6 * 10 ** 6
         game.candles = 10 * 10 ** 6
         game.resources.globalWax = 1
         game.resources.wax = 1
-        autoClicker.unlock()
-        autoSeller.unlock()
-        wax.unlock()
     },
     unlockWeapons() {
         this.unlockTech()
