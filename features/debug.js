@@ -1,4 +1,9 @@
 const debug = {
+    unlockWax(){
+        game.resources.money = 10000
+        game.candles = 99
+        game.resources.wax = 1
+    },
     unlockTech() {
         cpu.availableCpus = 500;
         marketManipulator.level = 120

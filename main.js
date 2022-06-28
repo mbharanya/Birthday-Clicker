@@ -111,7 +111,7 @@ const game = {
             tech.enable()
         }
         
-        if (game.resources.wax <= 0 && wax.autoBuyer) {
+        if (game.resources.wax <= 0 && wax.autoBuyer && autoClicker.clicksPerSecond > 0) {
             wax.buy(autoClicker.clicksPerSecond)
         }
 

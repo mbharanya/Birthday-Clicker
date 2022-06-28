@@ -44,11 +44,11 @@ const autoClicker = {
 
 
 clicksPerSecondElement.addEventListener("change", function (e) {
-    autoClicker.update(clicksPerSecondElement.value)
+    autoClicker.update(parseInt(clicksPerSecondElement.value))
 })
 
 enableAutoClickerElement.addEventListener("change", function (e) {
-    autoClicker.update(clicksPerSecondElement.value)
+    autoClicker.update(parseInt(clicksPerSecondElement.value))
 })
 
 
