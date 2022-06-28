@@ -42,7 +42,7 @@ const constants = {
 }
 
 const game = {
-    startTime: new Date(),
+    startTime: null,
     candles: constants.BASE_CANDLES,
     resources: {
         unsoldCandles: constants.BASE_CANDLES,
@@ -59,12 +59,14 @@ const game = {
         hasCpu: false,
         hasTech: false,
     },
-    mainLoop:
-        window.setInterval(function () {
+    start(){
+        game.startTime = new Date()
+        game.mainLoop = window.setInterval(function () {
             game.updateDisplay()
             game.eventCheck()
-        }, 10),
-
+        }, 10)
+    },
+    mainLoop: null,
     updateDisplay: function () {
         candleCountElement.innerText = formatWithCommas(game.candles) + ` (${spellf(game.candles)})`
         waxElement.innerText = formatWithCommas(game.resources.wax)
@@ -137,12 +139,14 @@ const game = {
         if (amount <= game.resources.unsoldCandles) {
             game.resources.money += amount * value
             game.resources.unsoldCandles -= amount
+            stats.moneyEarned += amount * value
         }
     },
     purchase: function (amount, unsoldCandleAmount = 0) {
         if (amount <= game.resources.money && unsoldCandleAmount <= game.resources.unsoldCandles) {
             game.resources.money -= amount
             game.resources.unsoldCandles -= unsoldCandleAmount
+            stats.spentMoney += amount
             return true
         }
         return false
@@ -152,6 +156,7 @@ const game = {
 
 
 makeCandleBtn.addEventListener("click", function (e) {
+    stats.manuallyClicked += 1
     game.candleCreated(1)
 })
 
@@ -165,4 +170,5 @@ window.addEventListener("load", async function (e) {
     await writeToChat("Hello there...")
     await writeToChat("So you're here expecting a challenge?")
     await writeToChat("Just chill and make some candles!")
+    game.start()
 })

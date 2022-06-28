@@ -15,10 +15,13 @@ document.querySelector(".endgame-decision-btn").addEventListener("click", functi
                 <td><h1> ${game.candles} (${spellf(game.candles)}) candles produced!</h1></td>
             </tr>
             <tr>
+                <td>Clicked the make candle button ${stats.manuallyClicked} times</td>
+            </tr>
+            <tr>
                 <td>${spellf(game.resources.globalWax)} wax left over</td>
             </tr>
             <tr>
-                <td>${spellf(game.resources.money)}$ left</td>
+                <td>${spellf(game.resources.money)}$ left, ${spellf(stats.spentMoney)}$ spent, ${spellf(stats.moneyEarned)}$ earned</td>
             </tr>
             <tr>
                 <td>${spellf(game.resources.poshness)} poshness collected</td>
