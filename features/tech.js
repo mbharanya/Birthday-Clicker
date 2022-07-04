@@ -105,6 +105,7 @@ const tech = {
                     Wait didn't we make ${spellf(game.candles)} candles?
                     Maybe we can use them to fight them off?`)
                     document.getElementById("buy-candle-weapons-research").style.display = "block"
+                    document.getElementById("candleWeapons-research").style.display = "block"
                     document.getElementById("interdimensional-beings").style.display = "block"
                     enemies.activate()
                 }

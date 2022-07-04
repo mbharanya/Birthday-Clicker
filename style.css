@@ -134,6 +134,10 @@ div.machines {
     src: url('fonts/UnifrakturCook/UnifrakturCook-Bold.ttf') format('truetype')
 }
 
+#candleWeapons-research{
+    display: none;
+}
+
 
 #buy-candle-weapons-research {
     display: none;
