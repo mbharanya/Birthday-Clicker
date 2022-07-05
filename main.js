@@ -128,6 +128,7 @@ const game = {
             }
         } else {
             if (game.resources.globalWax > 0) {
+                game.candles += amount
                 game.resources.globalWax -= amount * constants.WAX_PER_CANDLE
                 game.resources.unsoldCandles += amount
                 return true
