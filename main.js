@@ -55,11 +55,10 @@ const game = {
         hasAutoClicker: false,
         hasWaxMarket: false,
         hasMarketManipulation: false,
-        hasDirtyMarketManipulation: false,
         hasCpu: false,
         hasTech: false,
     },
-    start(){
+    start() {
         game.startTime = new Date()
         game.mainLoop = window.setInterval(function () {
             game.updateDisplay()
@@ -93,15 +92,21 @@ const game = {
             document.getElementById("poshness").style.display = "block"
             document.getElementById('wax-market').style.display = "block"
         }
-        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS && !game.features.hasMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD
+            && game.resources.poshness >= constants.MARKET_MANIPULATION_POSH_POSHNESS
+            && !game.features.hasMarketManipulation
+        ) {
             writeToChat("What a posh gentleman🎩\nYou unlocked Posh Market Manipulation")
             game.features.hasMarketManipulation = true
             document.getElementById("posh-market-manipulation").style.display = "block"
         }
 
-        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD && game.resources.poshness <= constants.MARKET_MANIPULATION_DIRTY_POSHNESS && !game.features.hasDirtyMarketManipulation) {
+        if (game.candles >= constants.MARKET_MANIPULATION_CANDLE_THRESHOLD
+            && game.resources.poshness <= constants.MARKET_MANIPULATION_DIRTY_POSHNESS
+            && !game.features.hasMarketManipulation
+        ) {
             writeToChat("You are truly disgusting\nYou unlocked Dirty Market Manipulation")
-            game.features.hasDirtyMarketManipulation = true
+            game.features.hasMarketManipulation = true
             document.getElementById("dirty-market-manipulation").style.display = "block"
         }
 
