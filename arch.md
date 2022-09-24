@@ -1,0 +1,14 @@
+# Architecture
+- One main loop
+- Registry for units, upgrade cost
+  - Registry handles display, removal
+  - Register UI block unregister it
+- Each unit has unlock, tick, upgrade functions
+  - Unit has html, is enclosed element
+  - Unit has item cost, cost type
+- Unit testing for each Unit
+  - Simulate time, have multiplier for each action
+- Items have upgrade properties, patch for cost and features
+- trophies, stats
+- ECS
+	- Entity is 
